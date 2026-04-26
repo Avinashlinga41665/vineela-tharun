@@ -28,7 +28,7 @@ export default function Hero() {
       </p>
 
       <p className="text-xl font-medium text-[#1F2937]">
-        December 12, 2026
+        August 16, 2026
       </p>
 
     </section>

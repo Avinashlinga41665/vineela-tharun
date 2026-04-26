@@ -17,7 +17,9 @@ export default function Footer() {
       <p className="text-gray-500 text-sm">
         Designed & Developed by{" "}
         <span className="text-[#D4AF37] font-medium">
+           <a href="https://myportfolio-rouge-zeta.vercel.app/" target="_blank" rel="noopener noreferrer"className="text-[#D4AF37] hover:underline">
           CodeWeave {}
+          </a>
         </span>
       </p>
 
