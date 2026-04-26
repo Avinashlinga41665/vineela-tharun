@@ -6,6 +6,8 @@ import Events from "@/components/Events";
 import Location from "@/components/Location";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
+import Countdown from "@/components/Countdown";
+
 
 export default function Home() {
   return (
@@ -22,6 +24,7 @@ export default function Home() {
         <Location />
         <Gallery />
         <Footer/>
+        <Countdown />
       </motion.div>
 
     </main>

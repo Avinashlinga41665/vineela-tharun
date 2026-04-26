@@ -1,3 +1,5 @@
+import Countdown from "@/components/Countdown";
+
 export default function Hero() {
   return (
     <section className="py-20 px-6 flex flex-col items-center justify-center text-center bg-[#FFF8F3] min-h-[90vh]">
@@ -17,8 +19,8 @@ export default function Hero() {
       </p>
 
       {/* Names */}
-      <h1 className="text-5xl md:text-6xl font-serif text-[#2C2C2C] mb-6">
-        Tharun & Vineela
+      <h1 className="font-[var(--font-playfair)] text-6xl md:text-7xl text-[#2C2C2C] mb-6 tracking-[0.05em] leading-tight">
+        Tharun <span className="mx-3 text-[#D4AF37]">&</span> Vineela
       </h1>
 
       {/* Gold Divider */}
@@ -38,7 +40,9 @@ export default function Hero() {
       <p className="text-md text-gray-600 mb-4">
         Hyderabad
       </p>
-
+       <div className="text-sm font-medium text-[#1F2937] mb-2">
+       <Countdown />
+      </div>
       {/* Tagline */}
       <p className="text-sm text-gray-500 italic">
         ✨ Save the date and celebrate with us 💫
