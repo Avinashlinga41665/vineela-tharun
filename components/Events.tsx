@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 type EventType = {
   id: number;
   name: string;
@@ -12,7 +13,6 @@ type EventType = {
 };
 
 export default function Events() {
-  /* ✅ Proper typing */
   const [selected, setSelected] = useState<EventType | null>(null);
 
   const events: EventType[] = [
@@ -22,7 +22,7 @@ export default function Events() {
       date: "Aug 10",
       time: "Morning",
       desc: "A joyful ceremony full of colors and laughter.",
-      img: "Haldi.png",
+      img: "/Haldi.png",
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ export default function Events() {
       date: "Aug 11",
       time: "Evening",
       desc: "Music, dance and mehendi celebration.",
-      img: "Mehendi.png",
+      img: "/Mehendi.png",
     },
     {
       id: 3,
@@ -38,14 +38,22 @@ export default function Events() {
       date: "Aug 12",
       time: "Night",
       desc: "Join us for a grand celebration.",
-      img: "Reception.png",
+      img: "/Reception.png",
     },
   ];
 
+  /* ✅ Close on ESC key */
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
   return (
-    <section className="py-16 px-6 text-center bg-white">
-      
-      {/* Title */}
+    <section className="py-20 px-6 text-center bg-white">
+
       <h2 className="text-3xl font-serif mb-12 text-[#2C2C2C]">
         Wedding Events
       </h2>
@@ -57,25 +65,32 @@ export default function Events() {
             key={event.id}
             layoutId={`card-${event.id}`}
             onClick={() => setSelected(event)}
-            className="cursor-pointer p-8 rounded-2xl border border-[#E5D7C6] bg-[#F8F1EC] shadow-sm hover:shadow-md hover:-translate-y-1 transition"
+            whileHover={{ scale: 1.03 }}
+            className="cursor-pointer p-8 rounded-2xl 
+            border border-[#E5D7C6] 
+            bg-[#F8F1EC] 
+            shadow-sm 
+            hover:shadow-lg 
+            hover:border-[#D4AF37] 
+            transition duration-300"
           >
             <h3 className="text-xl font-semibold mb-2 text-[#1F2937]">
               {event.name}
             </h3>
 
-            <p className="text-gray-600">{event.date}</p>
+            <p className="text-gray-600 mb-1">{event.date}</p>
             <p className="text-gray-500">{event.time}</p>
           </motion.div>
         ))}
       </div>
 
-      {/* Expanded Modal */}
+      {/* Modal */}
       <AnimatePresence>
         {selected && (
           <>
             {/* Overlay */}
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              className="fixed inset-0 bg-black/40 backdrop-blur-md z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -85,38 +100,47 @@ export default function Events() {
             {/* Expanding Card */}
             <motion.div
               layoutId={`card-${selected.id}`}
-              className="fixed top-1/2 left-1/2 z-50 w-[90%] max-w-lg -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-6 shadow-xl"
-              initial={{ rotateY: -8, scale: 0.95 }}
+              className="fixed top-1/2 left-1/2 z-50 w-[90%] max-w-lg 
+              -translate-x-1/2 -translate-y-1/2 
+              bg-white rounded-2xl p-6 shadow-xl"
+              initial={{ rotateY: -6, scale: 0.95 }}
               animate={{ rotateY: 0, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{
+                type: "spring",
+                stiffness: 120,
+                damping: 18,
+              }}
+              onClick={(e) => e.stopPropagation()}
             >
               {/* Image */}
               <img
                 src={selected.img}
                 alt={selected.name}
-                className="rounded-xl mb-4 w-full h-56 object-cover"
+                onError={(e) =>
+                  ((e.target as HTMLImageElement).src = "/fallback.jpg")
+                }
+                className="rounded-xl mb-6 w-full h-56 object-cover"
               />
 
-              {/* Title */}
-              <h3 className="text-2xl font-serif mb-2 text-[#2C2C2C]">
+              {/* Content */}
+              <h3 className="text-2xl font-serif mb-3 text-[#2C2C2C]">
                 {selected.name}
               </h3>
 
-              {/* Date */}
               <p className="text-gray-600 mb-2">
                 {selected.date} • {selected.time}
               </p>
 
-              {/* Description */}
-              <p className="text-gray-500 mb-4">
+              <p className="text-gray-500 mb-6 leading-relaxed">
                 {selected.desc}
               </p>
 
-              {/* Close Button */}
+              {/* Close */}
               <button
                 onClick={() => setSelected(null)}
-                className="px-4 py-2 border text-black-300 rounded-full hover:bg-gray-500 transition"
+                className="px-5 py-2 border border-[#D4AF37] text-[#D4AF37] 
+                rounded-full hover:bg-[#D4AF37] hover:text-white transition"
               >
                 Close
               </button>

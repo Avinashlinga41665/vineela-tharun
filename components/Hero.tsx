@@ -1,34 +1,47 @@
 export default function Hero() {
   return (
-    <section className="h-[80vh] flex flex-col items-center justify-center text-center px-6 bg-[#FFF8F3]">
+    <section className="py-20 px-6 flex flex-col items-center justify-center text-center bg-[#FFF8F3] min-h-[90vh]">
 
-      <div className="center">
-       
-          <div className="overflow-hidden rounded-xl">
-            <img
-              src={"GaneshIcon.png"}
-              className="w-full h-48 object-cover hover:scale-110 transition duration-500"
-            />
-          </div>
-          </div>
+      {/* Ganesh Icon */}
+      <div className="mb-6">
+        <img
+          src="/GaneshIcon.png"
+          alt="Ganesh"
+          className="w-20 h-20 mx-auto object-contain opacity-90"
+        />
+      </div>
 
-
-      <p className="uppercase tracking-widest text-sm  text-gray-700 mb-4">
+      {/* Invitation Text */}
+      <p className="uppercase tracking-widest text-sm text-gray-600 mb-4">
         You’re Invited
       </p>
 
-      <h1 className="text-5xl md:text-6xl font-serif mb-4 text-[#2C2C2C]">
+      {/* Names */}
+      <h1 className="text-5xl md:text-6xl font-serif text-[#2C2C2C] mb-6">
         Tharun & Vineela
       </h1>
 
+      {/* Gold Divider */}
       <div className="w-16 h-[2px] bg-[#D4AF37] mb-6"></div>
 
-      <p className="text-gray-600 text-lg mb-4 max-w-md text-[#6B7280]">
-        Together with their families, request the pleasure of your presence
+      {/* Subtitle */}
+      <p className="text-lg text-[#6B7280] max-w-md leading-relaxed mb-6">
+        Together with love, we invite you to celebrate our wedding
       </p>
 
-      <p className="text-xl font-medium text-[#1F2937]">
+      {/* Date */}
+      <p className="text-xl font-medium text-[#1F2937] mb-2">
         August 16, 2026
+      </p>
+
+      {/* Location */}
+      <p className="text-md text-gray-600 mb-4">
+        Hyderabad
+      </p>
+
+      {/* Tagline */}
+      <p className="text-sm text-gray-500 italic">
+        ✨ Save the date and celebrate with us 💫
       </p>
 
     </section>
