@@ -7,7 +7,7 @@ export default function Contact() {
 
 
       {/* Soft overlay */}
-      <div className="absolute inset-0 bg-white/95"></div>
+      <div className="absolute inset-0 bg-[#FFF8F3]/95"></div>
 
       {/* Content */}
       <div className="relative z-10">
@@ -25,7 +25,7 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-6 max-w-xl mx-auto">
 
           {/* Groom */}
-          <div className="p-6 rounded-2xl border border-[#E5D7C6] bg-[#FDF6F0] shadow-sm">
+          <div className="p-6 rounded-2xl border border-[#E5D7C6] bg-white shadow-sm">
             <p className="text-sm text-gray-500">Groom</p>
             <p className="font-[var(--font-playfair)] text-lg text-black mb-2">Tharun</p>
 
@@ -39,7 +39,7 @@ export default function Contact() {
           </div>
 
           {/* Bride */}
-          <div className="p-6 rounded-2xl border border-[#E5D7C6] bg-[#FDF6F0] shadow-sm">
+          <div className="p-6 rounded-2xl border border-[#E5D7C6] bg-white shadow-sm">
             <p className="text-sm text-gray-500">Bride</p>
             <p className="font-[var(--font-playfair)] text-lg text-black mb-2">Vineela</p>
 

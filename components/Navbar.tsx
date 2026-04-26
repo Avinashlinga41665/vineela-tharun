@@ -36,10 +36,16 @@ export default function Navbar() {
 
       <div className="max-w-5xl mx-auto flex justify-between items-center px-6 py-4">
 
-        {/* Logo */}
-        <h1 className="font-[var(--font-playfair)] text-xl text-[#2C2C2C]">
-          T & V
-        </h1>
+<h1
+  onClick={() => {
+    document.getElementById("home")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+  className="cursor-pointer font-[var(--font-playfair)] text-xl text-[#2C2C2C]"
+>
+  T & V
+</h1>
 
         {/* Desktop */}
         <div className="hidden md:flex gap-8 text-sm">
