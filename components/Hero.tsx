@@ -9,7 +9,7 @@ export default function Hero() {
         <img
           src="/GaneshIcon.png"
           alt="Ganesh"
-          className="w-20 h-20 mx-auto object-contain opacity-90"
+          className="mx-auto object-contain opacity-90"
         />
       </div>
 
