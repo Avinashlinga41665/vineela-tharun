@@ -11,7 +11,7 @@ export default function Gallery() {
   ];
 
   return (
-    <section className="py-20 px-6 text-center bg-white">
+    <section id="gallery" className="py-20 px-6 text-center bg-white">
 
       {/* Title */}
       <h2 className="text-3xl font-serif mb-12 text-[#2C2C2C]">
@@ -33,7 +33,7 @@ function ImageCard({ src }: { src: string }) {
   const [imgSrc, setImgSrc] = useState(src);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#E5D7C6] bg-[#FFFDFB] shadow-sm hover:shadow-lg transition duration-300">
+    <div  className="overflow-hidden rounded-2xl border border-[#E5D7C6] bg-[#FFFDFB] shadow-sm hover:shadow-lg transition duration-300">
 
       <img
         src={imgSrc}

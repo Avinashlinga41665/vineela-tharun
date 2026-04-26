@@ -52,7 +52,8 @@ export default function Events() {
   }, []);
 
   return (
-    <section className="py-20 px-6 text-center bg-white">
+    <section id="events" className="py-20 px-6 text-center bg-white">
+      
 
       <h2 className="text-3xl font-serif mb-12 text-[#2C2C2C]">
         Wedding Events

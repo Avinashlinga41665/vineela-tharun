@@ -6,6 +6,8 @@ import Events from "@/components/Events";
 import Location from "@/components/Location";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Contact from "@/components/Contact";
 
 
 export default function Home() {
@@ -18,10 +20,12 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl border border-[#F1E4D8] overflow-hidden"
       >
+        <Navbar/>
         <Hero />
         <Events />
         <Location />
         <Gallery />
+        <Contact/>
         <Footer/>
       </motion.div>
 
