@@ -2,6 +2,17 @@ export default function Hero() {
   return (
     <section className="h-[80vh] flex flex-col items-center justify-center text-center px-6 bg-[#FFF8F3]">
 
+      <div className="center">
+       
+          <div className="overflow-hidden rounded-xl">
+            <img
+              src={"Ganeshicon.png"}
+              className="w-full h-48 object-cover hover:scale-110 transition duration-500"
+            />
+          </div>
+          </div>
+
+
       <p className="uppercase tracking-widest text-sm  text-gray-700 mb-4">
         You’re Invited
       </p>
