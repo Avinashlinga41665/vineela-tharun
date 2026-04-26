@@ -6,7 +6,7 @@ export default function Hero() {
        
           <div className="overflow-hidden rounded-xl">
             <img
-              src={"Ganeshicon.png"}
+              src={"GaneshIcon.png"}
               className="w-full h-48 object-cover hover:scale-110 transition duration-500"
             />
           </div>
