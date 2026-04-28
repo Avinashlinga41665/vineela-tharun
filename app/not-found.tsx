@@ -1,5 +1,8 @@
 export const metadata = {
   title: "Page Not Found | Tharun & Vineela Wedding",
+  verification: {
+    google: "XYZ123",
+  },
 };
 
 export default function NotFound() {
