@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const sections = ["home", "events", "venue", "gallery", "contact"];
+const sections = ["home", "gallery", "events", "venue", "contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
