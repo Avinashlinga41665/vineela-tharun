@@ -22,9 +22,9 @@ export default function Home() {
       >
         <Navbar/>
         <Hero />
+        <Gallery/>
         <Events />
         <Location />
-        <Gallery />
         <Contact/>
         <Footer/>
       </motion.div>
