@@ -20,7 +20,7 @@ export const metadata = {
   title: "Tharun & Vineela Wedding",
   description: "Join us for the wedding celebration of Tharun & Vineela",
   verification: {
-    google: "XYZ123",
+    google: "NRYfxebAeiv6cFQMMvJhYuWa_F_DYRWNxr32qXiQUjk",
   },
 };
 
