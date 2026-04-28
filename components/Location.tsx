@@ -2,11 +2,11 @@ export default function Location() {
   return (
     <section
       id="venue"
-      className="relative overflow-hidden py-20 px-6 text-center bg-[#FFF8F3]"
+      className="relative overflow-hidden py-20 px-6 text-center bg-white"
     >
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#FFF8F3]/95"></div>
+      <div className="absolute inset-0 bg-white/95"></div>
 
       {/* Content */}
       <div className="relative z-10">

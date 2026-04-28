@@ -52,7 +52,7 @@ export default function Events() {
   }, []);
 
   return (
-    <section id="events" className="py-20 px-6 text-center bg-white">
+    <section id="events" className="py-20 px-6 text-center bg-[#FFF8F3]">
       
 
       <h2 className="text-3xl font-serif mb-12 text-[#2C2C2C]">
@@ -69,7 +69,7 @@ export default function Events() {
             whileHover={{ scale: 1.03 }}
             className="cursor-pointer p-8 rounded-2xl 
             border border-[#E5D7C6] 
-            bg-[#F8F1EC] 
+            bg-white 
             shadow-sm 
             hover:shadow-lg 
             hover:border-[#D4AF37] 
