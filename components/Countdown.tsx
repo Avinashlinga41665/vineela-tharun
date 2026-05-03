@@ -31,16 +31,21 @@ export default function Countdown() {
   }, [targetDate]);
 
   return (
-    <div className="mt-8 flex gap-6 justify-center text-center">
+    <div className="flex justify-center gap-6 md:gap-8 text-center">
 
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label}>
-          <p className="text-2xl font-semibold text-[#2C2C2C]">
+        <div key={label} className="flex flex-col items-center">
+
+          {/* Number */}
+          <p className="font-cormorant text-2xl md:text-3xl text-primary">
             {value}
           </p>
-          <p className="text-xs uppercase tracking-wider text-gray-500">
+
+          {/* Label */}
+          <p className="text-xs uppercase tracking-[0.2em] text-muted mt-1">
             {label}
           </p>
+
         </div>
       ))}
 

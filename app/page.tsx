@@ -12,7 +12,7 @@ import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
-    <main className="bg-gradient-to-br from-[#FFF8F3] to-[#FDEFEF] min-h-screen flex items-center justify-center p-6">
+    <main className="bg-linear-to-br from-[#FFF8F3] to-[#FDEFEF] min-h-screen flex items-center justify-center p-6">
 
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: 40 }}

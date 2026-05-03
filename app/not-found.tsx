@@ -11,7 +11,7 @@ export default function NotFound() {
 
       <img src="/GaneshIcon.png" alt="Ganesh" className="mx-auto object-contain opacity-90"/>
        {/* Title */}
-      <h1 className="font-[var(--font-playfair)] text-6xl text-[#2C2C2C] mb-4">
+      <h1 className="font-[--font-playfair] text-6xl text-[#2C2C2C] mb-4">
         404
       </h1>
 

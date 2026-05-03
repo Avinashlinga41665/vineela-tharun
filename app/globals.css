@@ -32,3 +32,38 @@ body {
 .font-cormorant {
   font-family: var(--font-cormorant);
 }
+/* ===== Common CSS ===== */
+.section {
+  @apply py-20 px-6 text-center;
+}
+
+.container-custom {
+  @apply max-w-5xl mx-auto;
+}
+
+/* ===== TITLES ===== */
+.section-title {
+  @apply text-3xl md:text-4xl font-[--font-cormorant] text-[#2C2C2C] mb-12;
+}
+
+/* ===== CARD SYSTEM ===== */
+.card {
+  @apply rounded-2xl border border-[#E5D7C6] bg-[#FFFDFB] shadow-sm transition duration-300;
+}
+
+.card-hover {
+  @apply hover:shadow-lg;
+}
+
+/* ===== TEXT SYSTEM ===== */
+.text-primary {
+  @apply text-black;
+}
+
+.text-accent {
+  @apply text-[#D4AF37];
+}
+
+.text-muted {
+  @apply text-gray-500;
+}

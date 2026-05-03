@@ -1,28 +1,38 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#1F1F1F] text-center py-10 px-6 text-white">
+    <footer className="section bg-[#1F1F1F] text-center text-white">
 
-      {/* Couple (main focus still) */}
-      <h2 className="text-2xl font-serif mb-2">
-        Tharun & Vineela
-      </h2>
+      <div className="container-custom">
 
-      <p className="text-gray-400 mb-4">
-        December 12, 2026
-      </p>
+        {/* Names */}
+        <h2 className="font-cormorant text-2xl mb-2">
+          Tharun 
+          <span className="text-[#D4AF37] mx-2">&</span>
+          Vineela
+        </h2>
 
-      <div className="w-10 h-[2px] bg-[#D4AF37] mx-auto my-4"></div>
+        {/* Date */}
+        <p className="text-gray-400 mb-4">
+          August 23, 2026
+        </p>
 
-      {/* Company credit */}
-      <p className="text-gray-500 text-sm">
-        Designed & Developed by{" "}
-        <span className="text-[#D4AF37] font-medium">
-           <a href="https://myportfolio-rouge-zeta.vercel.app/" target="_blank" rel="noopener noreferrer"className="text-[#D4AF37] hover:underline">
-          CodeWeave {}
+        {/* Divider */}
+        <div className="w-12 h-0.5 bg-[#D4AF37] mx-auto mb-4" />
+
+        {/* Credit */}
+        <p className="text-gray-500 text-sm">
+          Designed & Developed by{" "}
+          <a
+            href="https://myportfolio-rouge-zeta.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#D4AF37] hover:underline"
+          >
+            CodeWeave
           </a>
-        </span>
-      </p>
+        </p>
 
+      </div>
     </footer>
   );
 }

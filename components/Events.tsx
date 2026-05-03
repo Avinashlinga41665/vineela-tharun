@@ -42,7 +42,6 @@ export default function Events() {
     },
   ];
 
-  /* ✅ Close on ESC key */
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setSelected(null);
@@ -52,35 +51,29 @@ export default function Events() {
   }, []);
 
   return (
-    <section id="events" className="py-20 px-6 text-center bg-[#FFF8F3]">
-      
+    <section id="events" className="section bg-[#FFF8F3]">
 
-      <h2 className="text-3xl font-serif mb-12 text-[#2C2C2C]">
+      {/* Title */}
+      <h2 className="section-title">
         Wedding Events
       </h2>
 
       {/* Cards */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="container-custom grid md:grid-cols-3 gap-6">
         {events.map((event) => (
           <motion.div
             key={event.id}
             layoutId={`card-${event.id}`}
             onClick={() => setSelected(event)}
             whileHover={{ scale: 1.03 }}
-            className="cursor-pointer p-8 rounded-2xl 
-            border border-[#E5D7C6] 
-            bg-white 
-            shadow-sm 
-            hover:shadow-lg 
-            hover:border-[#D4AF37] 
-            transition duration-300"
+            className="card card-hover cursor-pointer p-6 bg-white hover:border-[#D4AF37]"
           >
-            <h3 className="text-xl font-semibold mb-2 text-[#1F2937]">
+            <h3 className="font-cormorant text-xl text-primary mb-2">
               {event.name}
             </h3>
 
-            <p className="text-gray-600 mb-1">{event.date}</p>
-            <p className="text-gray-500">{event.time}</p>
+            <p className="text-muted mb-1">{event.date}</p>
+            <p className="text-muted text-sm">{event.time}</p>
           </motion.div>
         ))}
       </div>
@@ -98,14 +91,14 @@ export default function Events() {
               onClick={() => setSelected(null)}
             />
 
-            {/* Expanding Card */}
+            {/* Card */}
             <motion.div
               layoutId={`card-${selected.id}`}
               className="fixed top-1/2 left-1/2 z-50 w-[90%] max-w-lg 
               -translate-x-1/2 -translate-y-1/2 
-              bg-white rounded-2xl p-6 shadow-xl"
-              initial={{ rotateY: -6, scale: 0.95 }}
-              animate={{ rotateY: 0, scale: 1 }}
+              card bg-white p-6 shadow-xl"
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}
               transition={{
                 type: "spring",
@@ -125,19 +118,19 @@ export default function Events() {
               />
 
               {/* Content */}
-              <h3 className="text-2xl font-serif mb-3 text-[#2C2C2C]">
+              <h3 className="font-cormorant text-2xl text-primary mb-3">
                 {selected.name}
               </h3>
 
-              <p className="text-gray-600 mb-2">
+              <p className="text-muted mb-2">
                 {selected.date} • {selected.time}
               </p>
 
-              <p className="text-gray-500 mb-6 leading-relaxed">
+              <p className="text-muted mb-6 leading-relaxed">
                 {selected.desc}
               </p>
 
-              {/* Close */}
+              {/* Button */}
               <button
                 onClick={() => setSelected(null)}
                 className="px-5 py-2 border border-[#D4AF37] text-[#D4AF37] 

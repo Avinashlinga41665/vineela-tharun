@@ -31,21 +31,23 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-[999] 
-    bg-[#FFF8F3]/70 backdrop-blur-md border-b border-[#E5D7C6]">
+    <nav className="fixed top-0 left-0 w-full z-999 
+    bg-[#FFF8F3]/80 backdrop-blur-md border-b border-[#E5D7C6]">
 
-      <div className="max-w-5xl mx-auto flex justify-between items-center px-6 py-4">
+      {/* Container aligned with rest of site */}
+      <div className="container-custom flex justify-between items-center py-4">
 
-<h1
-  onClick={() => {
-    document.getElementById("home")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  }}
-  className="cursor-pointer font-[var(--font-playfair)] text-xl text-[#2C2C2C]"
->
-  T & V
-</h1>
+        {/* Logo */}
+        <h1
+          onClick={() => {
+            document.getElementById("home")?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+          className="cursor-pointer font-cormorant text-xl text-primary tracking-wide"
+        >
+          T <span className="text-accent">&</span> V
+        </h1>
 
         {/* Desktop */}
         <div className="hidden md:flex gap-8 text-sm">
@@ -53,10 +55,10 @@ export default function Navbar() {
             <a
               key={sec}
               href={`#${sec}`}
-              className={`${
+              className={`transition ${
                 active === sec
-                  ? "text-[#D4AF37] font-medium"
-                  : "text-gray-600 hover:text-[#D4AF37]"
+                  ? "text-accent font-medium"
+                  : "text-muted hover:text-accent"
               }`}
             >
               {sec.charAt(0).toUpperCase() + sec.slice(1)}
@@ -66,70 +68,70 @@ export default function Navbar() {
 
         {/* Hamburger */}
         <button
-          className="md:hidden text-2xl text-black"
+          className="md:hidden text-2xl text-primary"
           onClick={() => setOpen(true)}
         >
           ☰
         </button>
       </div>
 
-     {/* Side Drawer */}
-<AnimatePresence>
-  {open && (
-    <>
-      {/* Overlay */}
-      <motion.div
-        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={() => setOpen(false)}
-      />
-
       {/* Drawer */}
-      <motion.div
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ duration: 0.3 }}
-        className="fixed top-0 right-0 h-screen w-[75%] max-w-xs 
-        bg-[#FFF8F3] z-50 shadow-xl p-6 flex flex-col"
-      >
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="font-[var(--font-playfair)] text-lg">
-            Menu
-          </h2>
-
-          <button
-            onClick={() => setOpen(false)}
-            className="text-xl"
-          >
-            ✕
-          </button>
-        </div>
-
-        {/* Links */}
-        <div className="flex flex-col gap-6 text-lg">
-          {sections.map((sec) => (
-            <a
-              key={sec}
-              href={`#${sec}`}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className={`transition ${
-                active === sec
-                  ? "text-[#D4AF37] font-medium border-l-4 border-[#D4AF37] pl-2"
-                  : "text-gray-700"
-              }`}
+            />
+
+            {/* Side Menu */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3 }}
+              className="fixed top-0 right-0 h-screen w-[75%] max-w-xs 
+              bg-[#FFF8F3] z-50 shadow-xl p-6 flex flex-col"
             >
-              {sec.charAt(0).toUpperCase() + sec.slice(1)}
-            </a>
-          ))}
-        </div>
-      </motion.div>
-    </>
-  )}
-</AnimatePresence>
+              {/* Header */}
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="font-cormorant text-lg text-primary">
+                  Menu
+                </h2>
+
+                <button
+                  onClick={() => setOpen(false)}
+                  className="text-xl text-primary"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Links */}
+              <div className="flex flex-col gap-6 text-lg">
+                {sections.map((sec) => (
+                  <a
+                    key={sec}
+                    href={`#${sec}`}
+                    onClick={() => setOpen(false)}
+                    className={`transition ${
+                      active === sec
+                        ? "text-accent font-medium border-l-4 border-[#D4AF37] pl-2"
+                        : "text-muted"
+                    }`}
+                  >
+                    {sec.charAt(0).toUpperCase() + sec.slice(1)}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
     </nav>
   );
