@@ -29,13 +29,7 @@ export default function Hero() {
         </p>
 
         {/* Names */}
-<h1 className="font-greatvibes text-5xl md:text-7xl text-[#2C2C2C] tracking-[0.05em] leading-tight"> 
-  Tarun 
-  <span className="font-cormorant text-[#D4AF37] text-4xl md:text-5xl mx-2">
-    &
-  </span>
-  Vineela
-</h1> 
+        <h1 className="font-greatVibes text-5xl md:text-7xl text-[#2C2C2C] tracking-[0.05em] leading-tight"> Tarun<span className="font-cormorant text-[#D4AF37] text-4xl md:text-5xl mx-2">&</span>Vineela</h1> 
         {/* Gold Divider */}
         <div className="w-20 h-[2px] bg-[#D4AF37] mb-5 mr-6"></div>
 
