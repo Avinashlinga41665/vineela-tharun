@@ -29,12 +29,15 @@ export default function Hero() {
         </p>
 
         {/* Names */}
-        <h1 className="font-[var(--font-playfair)] text-6xl md:text-7xl text-[#2C2C2C] mb-6 tracking-[0.05em] leading-tight drop-shadow-sm">
-          Tharun <span className="mx-3 text-[#D4AF37]">&</span> Vineela
-        </h1>
-
+<h1 className="font-greatvibes text-5xl md:text-7xl text-[#2C2C2C] tracking-[0.05em] leading-tight"> 
+  Tarun 
+  <span className="font-cormorant text-[#D4AF37] text-4xl md:text-5xl mx-2">
+    &
+  </span>
+  Vineela
+</h1> 
         {/* Gold Divider */}
-        <div className="w-16 h-[2px] bg-[#D4AF37] mb-5"></div>
+        <div className="w-20 h-[2px] bg-[#D4AF37] mb-5 mr-6"></div>
 
         {/* Subtitle */}
         <p className="text-lg text-[#6B7280] max-w-md leading-relaxed mb-5">
@@ -43,7 +46,7 @@ export default function Hero() {
 
         {/* Date */}
         <p className="text-xl font-medium text-[#1F2937] mb-1">
-          August 16, 2026
+          August 23, 2026
         </p>
 
         {/* Location */}
