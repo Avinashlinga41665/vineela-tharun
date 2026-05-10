@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Page Not Found | Tharun & Vineela Wedding",
+  title: "Page Not Found | Tharun & Vineela",
   verification: {
     google: "XYZ123",
   },

@@ -9,7 +9,7 @@ export default function Hero() {
       className="section relative flex items-center justify-center min-h-[80vh]"
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#FFF8F3]/90" />
+      <div className="absolute inset-0 bg-[#FFF8F3]" />
 
       {/* Content */}
       <div className="container-custom relative z-10 flex flex-col items-center">
@@ -32,7 +32,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-7xl leading-[1.2] mb-6 text-primary">
 
           <span className="font-greatVibes">
-            Tharun
+            Tarun
           </span>
 
           <span className="font-cormorant text-accent text-3xl md:text-4xl mx-3">

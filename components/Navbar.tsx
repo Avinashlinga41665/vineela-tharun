@@ -35,7 +35,7 @@ export default function Navbar() {
     bg-[#FFF8F3]/80 backdrop-blur-md border-b border-[#E5D7C6]">
 
       {/* Container aligned with rest of site */}
-      <div className="container-custom flex justify-between items-center py-4">
+      <div className="container-custom flex justify-between items-center py-2">
 
         {/* Logo */}
         <h1
@@ -44,7 +44,7 @@ export default function Navbar() {
               behavior: "smooth",
             });
           }}
-          className="cursor-pointer font-cormorant text-xl text-primary tracking-wide"
+          className="cursor-pointer font-cormorant text-xl text-primary m-2 tracking-wide ml-4"
         >
           T <span className="text-accent">&</span> V
         </h1>
@@ -68,7 +68,7 @@ export default function Navbar() {
 
         {/* Hamburger */}
         <button
-          className="md:hidden text-2xl text-primary"
+          className="md:hidden text-2xl text-primary m-2 mr-4"
           onClick={() => setOpen(true)}
         >
           ☰

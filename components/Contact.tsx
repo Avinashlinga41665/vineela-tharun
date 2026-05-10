@@ -29,7 +29,7 @@ export default function Contact() {
             <p className="text-sm text-muted">Groom</p>
 
             <p className="font-cormorant text-lg text-primary mb-2">
-              Tharun
+              Tarun
             </p>
 
             <a
