@@ -1,38 +1,58 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Countdown from "@/components/Countdown";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="section relative flex items-center justify-center min-h-[80vh]"
+      className="section relative flex items-center justify-center min-h-[90vh]"
     >
-      {/* Overlay */}
+      {/* Background */}
       <div className="absolute inset-0 bg-[#FFF8F3]" />
 
-      {/* Content */}
-      <div className="container-custom relative z-10 flex flex-col items-center">
+      {/* Soft Glow (matches intro vibe) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-72 h-72 bg-[#D4AF37]/10 rounded-full blur-3xl" />
+      </div>
 
-        {/* Ganesh */}
-        <div className="mb-6">
+      {/* Content */}
+      <motion.div
+        className="container-custom relative z-10 flex flex-col items-center text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+
+        {/* 🪔 Ganesh with subtle animation */}
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        >
           <img
             src="/GaneshIcon.png"
             alt="Ganesh"
-            className="mx-auto object-contain opacity-90"
+            className="mx-auto object-contain opacity-90 w-16 md:w-20"
           />
-        </div>
+        </motion.div>
 
         {/* Invite Text */}
-        <p className="uppercase tracking-[0.2em] text-xs text-muted mb-4">
+        <p className="uppercase tracking-[0.3em] text-xs text-muted mb-4">
           You’re Invited
         </p>
 
-        {/* Names */}
-        <h1 className="text-5xl md:text-7xl leading-[1.2] mb-6 text-primary">
-
+        {/* ✨ Names (animated) */}
+        <motion.h1
+          className="text-5xl md:text-7xl leading-[1.2] mb-6 text-primary"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
           <span className="font-greatVibes">
-            Tarun
+            Tharun
           </span>
 
           <span className="font-cormorant text-accent text-3xl md:text-4xl mx-3">
@@ -42,11 +62,10 @@ export default function Hero() {
           <span className="font-greatVibes">
             Vineela
           </span>
+        </motion.h1>
 
-        </h1>
-
-        {/* Divider */}
-        <div className="w-20 h-0.5 bg-[#D4AF37] mb-6" />
+        {/* Gold Divider */}
+        <div className="w-16 h-[1.5px] bg-[#D4AF37] mb-6" />
 
         {/* Subtitle */}
         <p className="text-base md:text-lg text-[#6B7280] max-w-lg leading-relaxed mb-5">
@@ -63,17 +82,17 @@ export default function Hero() {
           Hyderabad
         </p>
 
-        {/* Countdown */}
-        <div className="mb-6">
+        {/* Countdown (boxed = premium feel) */}
+        <div className="mb-6 px-6 py-4 rounded-xl border border-[#E5D7C6] bg-white/70 backdrop-blur-sm">
           <Countdown />
         </div>
 
         {/* Tagline */}
-        <p className="text-sm text-gray-500 italic tracking-wide mb-2">
+        <p className="text-sm text-gray-500 italic tracking-wide">
           ✨ Save the date and celebrate with us 💫
         </p>
 
-      </div>
+      </motion.div>
     </section>
   );
 }
