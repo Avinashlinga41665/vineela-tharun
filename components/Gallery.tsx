@@ -1,80 +1,145 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const photos = [
+"/wedding1.jpeg", // Hero Image
+"/wedding2.jpeg",
+"/wedding3.jpeg",
+"/Gallery.jpeg",
+"/wedding4.jpeg",
+"/wedding5.jpeg",
+"/wedding6.jpeg",
+"/wedding7.jpeg",
+"/wedding8.jpeg",
+"/wedding9.jpeg",
+];
 
 export default function Gallery() {
-  const people = [
-    {
-      name: "Vineela",
-      role: "Bride",
-      img: "/bride.jpg",
-    },
-    {
-      name: "Tharun",
-      role: "Groom",
-      img: "/groom.jpg",
-    },
-  ];
+const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  return (
-    <section id="gallery" className="section bg-white">
+return ( <section
+   id="gallery"
+   className="py-20 bg-linear-to-b from-white to-[#faf7f2]"
+ > <div className="container mx-auto px-4 md:px-6">
 
-      {/* Title */}
-      <h2 className="section-title">Gallery</h2>
+```
+    {/* Heading */}
+    <div className="text-center mb-14">
+      <h2 className="font-cormorant text-5xl md:text-6xl text-primary">
+        Gallery
+      </h2>
 
-      <div className="container-custom grid gap-8 md:grid-cols-2">
-        {people.map((p, i) => (
-          <ProfileCard key={i} {...p} />
-        ))}
-      </div>
-    </section>
-  );
-}
+      <p className="mt-3 text-accent tracking-[0.25em] uppercase text-xs md:text-sm">
+        Moments We'll Cherish Forever
+      </p>
+    </div>
 
-function ProfileCard({
-  name,
-  role,
-  img,
-}: {
-  name: string;
-  role: string;
-  img: string;
-}) {
-  const [imgSrc, setImgSrc] = useState(img);
-
-  return (
+    {/* Hero Image */}
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="card card-hover overflow-hidden group"
+      className="
+        overflow-hidden
+        rounded-[32px]
+        shadow-xl
+        mb-6
+        cursor-pointer
+      "
+      onClick={() => setSelectedImage(photos[0])}
     >
-
-      {/* Image */}
-      <div className="relative overflow-hidden">
-        <img
-          src={imgSrc}
-          onError={() => setImgSrc("/fallback.jpg")}
-          className="w-full h-80 object-cover transition duration-700 group-hover:scale-105"
-          alt={name}
-        />
-
-        {/* subtle overlay */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition" />
-      </div>
-
-      {/* Content */}
-      <div className="p-6 text-center">
-
-        <h3 className="font-cormorant text-2xl text-primary">
-          {name}
-        </h3>
-
-        <p className="text-accent mt-2 tracking-wide">{role}</p>
-
-      </div>
+      <img
+        src={photos[0]}
+        alt="Hero"
+        className="
+          w-full
+          h-[280px]
+          md:h-[600px]
+          object-cover
+          transition
+          duration-700
+          hover:scale-105
+        "
+      />
     </motion.div>
-  );
-}
+
+    {/* Masonry Layout */}
+    <div className="columns-2 md:columns-3 gap-4 space-y-4">
+
+      {photos.slice(1).map((photo, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="
+            break-inside-avoid
+            overflow-hidden
+            rounded-[24px]
+            shadow-lg
+            cursor-pointer
+            group
+          "
+          onClick={() => setSelectedImage(photo)}
+        >
+          <img
+            src={photo}
+            alt={`Gallery ${index + 1}`}
+            loading="lazy"
+            className="
+              w-full
+              h-auto
+              block
+              transition-all
+              duration-700
+              group-hover:scale-105
+            "
+          />
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Lightbox */}
+    <AnimatePresence>
+      {selectedImage && (
+        <motion.div
+          className="
+            fixed
+            inset-0
+            z-50
+            bg-black/90
+            flex
+            items-center
+            justify-center
+            p-4
+          "
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.img
+            src={selectedImage}
+            alt=""
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.9 }}
+            className="
+              max-h-[90vh]
+              max-w-[95vw]
+              rounded-2xl
+              shadow-2xl
+            "
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
+
+  </div>
+</section>
+
+);
+    }
+    
