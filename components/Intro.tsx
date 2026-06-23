@@ -16,11 +16,21 @@ export default function Intro({
   };
 
   return (
+    
     <AnimatePresence mode="wait" initial={false}>
+      
       {show && (
         <>
           {/* BACKGROUND */}
-          <div className="fixed inset-0 bg-[#FFF8F3] z-[9998]" />
+<div className="fixed inset-0 z-[9998]">
+  <img
+    src="/Wedding1.jpeg"
+    alt=""
+    className="w-full h-full object-cover object-center"
+  />
+
+  <div className="absolute inset-0 bg-black/40" />
+</div>
 
           {/* GOLD GLOW */}
           <motion.div
@@ -30,7 +40,7 @@ export default function Intro({
             transition={{ duration: 1 }}
             style={{
               background:
-                "radial-gradient(circle at center, rgba(212,175,55,0.25), transparent 60%)",
+                "radial-gradient(circle at center, rgba(212,175,55,0.35), transparent 60%)",
             }}
           />
 
@@ -42,6 +52,7 @@ export default function Intro({
 
           {/* ================= DESKTOP PANELS ================= */}
          <div className="hidden md:block">
+          
   <motion.div
     className="fixed top-0 left-0 w-1/2 h-full bg-[#FFF8F3] z-[10000]
     shadow-[5px_0_30px_rgba(0,0,0,0.05)]"
@@ -77,35 +88,55 @@ export default function Intro({
           </div>
 
           {/* ================= CENTER CONTENT ================= */}
-          <motion.div
-            className="fixed inset-0 z-[10001] flex flex-col items-center justify-center text-center px-6"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="font-greatVibes text-4xl md:text-7xl text-[#2C2C2C]">
-              Tarun
-            </h1>
+         <motion.div
+  className="fixed inset-0 z-[10001] flex flex-col items-center justify-center text-center px-6"
+  initial={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  <motion.img
+    src="/GaneshIcon.png"
+    alt="Ganesh"
+    className="w-16 md:w-24 mb-6 opacity-90"
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 1 }}
+  />
 
-            <p className="text-[#D4AF37] tracking-[0.25em] my-2">
-              ✨ Weds ✨
-            </p>
+  <h1 className="font-greatVibes text-4xl md:text-7xl text-[#2C2C2C]">
+    Tharun
+  </h1>
 
-            <h1 className="font-greatVibes text-4xl md:text-7xl text-[#2C2C2C] mt-3 mb-2">
-              Vineela
-            </h1>
+  <p className="text-[#D4AF37] tracking-[0.25em] my-2">
+    ✨ Weds ✨
+  </p>
 
-            <button
-              onClick={handleClick}
-              className="px-6 md:px-8 py-3 
-              border border-[#D4AF37] text-[#D4AF37] 
-              rounded-full 
-              hover:bg-[#D4AF37] hover:text-white 
-              transition duration-300"
-            >
-              Open
-            </button>
-          </motion.div>
+  <h1 className="font-greatVibes text-4xl md:text-7xl text-[#2C2C2C] mt-3">
+    Vineela
+  </h1>
+
+  <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-gray-500 mt-4 mb-8">
+    Wedding Invitation
+  </p>
+
+  <motion.button
+    onClick={handleClick}
+    whileHover={{ scale: 1.05, y: -2 }}
+    whileTap={{ scale: 0.98 }}
+    className="
+      px-8 py-3
+      rounded-full
+      bg-[#D4AF37]
+      text-white
+      font-medium
+      shadow-lg
+      hover:shadow-[#D4AF37]/30
+      transition-all duration-300
+    "
+  >
+    Open Invitation
+  </motion.button>
+</motion.div>
         </>
       )}
     </AnimatePresence>
@@ -119,10 +150,10 @@ function Petals() {
   >([]);
 
   useEffect(() => {
-    const data = [...Array(6)].map(() => ({
-      startX: Math.random() * 300,
-      endX: Math.random() * 300,
-      duration: 4 + Math.random() * 2,
+    const data = [...Array(8)].map(() => ({
+      startX: Math.random() * window.innerWidth,
+      endX: Math.random() * window.innerWidth,
+      duration: 5 + Math.random() * 3,
       delay: Math.random() * 2,
     }));
 
@@ -134,13 +165,21 @@ function Petals() {
       {petals.map((p, i) => (
         <motion.div
           key={i}
-          className="absolute w-3 h-3 bg-pink-300 rounded-full opacity-70"
-          initial={{ y: -50, x: p.startX }}
-          animate={{ y: "100vh", x: p.endX }}
+          className="absolute w-2 h-4 bg-[#D4AF37]/60 rounded-full rotate-45"
+          initial={{
+            y: -50,
+            x: p.startX,
+          }}
+          animate={{
+            y: "110vh",
+            x: p.endX,
+            rotate: [45, 90, 180, 270],
+          }}
           transition={{
             duration: p.duration,
             repeat: Infinity,
             delay: p.delay,
+            ease: "linear",
           }}
         />
       ))}
@@ -168,7 +207,7 @@ function Particles() {
       {particles.map((p, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-[#D4AF37] rounded-full"
+          className="absolute w-2 h-2 bg-[#D4AF37] rounded-full shadow-[0_0_10px_rgba(212,175,55,0.6)]"
           initial={{ scale: 0, opacity: 1 }}
           exit={{
             scale: 1,

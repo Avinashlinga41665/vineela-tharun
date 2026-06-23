@@ -31,7 +31,7 @@ export default function Countdown() {
   }, [targetDate]);
 
   return (
-    <div className="flex justify-center gap-6 md:gap-8 text-center">
+    <div className="flex justify-center gap-4 md:gap-6 text-center">
 
       {Object.entries(timeLeft).map(([label, value]) => (
         <div key={label} className="flex flex-col items-center">
@@ -42,7 +42,7 @@ export default function Countdown() {
           </p>
 
           {/* Label */}
-          <p className="text-xs uppercase tracking-[0.2em] text-muted mt-1">
+          <p className="text-xs uppercase tracking-[0.05em] text-white mt-1">
             {label}
           </p>
 
