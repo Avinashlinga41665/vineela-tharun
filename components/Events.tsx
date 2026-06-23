@@ -49,13 +49,11 @@ setSelected(null);
 }
 };
 
-```
 window.addEventListener("keydown", handleKey);
 
 return () => {
   window.removeEventListener("keydown", handleKey);
 };
-```
 
 }, []);
 
@@ -64,7 +62,6 @@ return ( <section
    className="py-20 bg-[#FFF8F3]"
  > <div className="container mx-auto px-4 md:px-6">
 
-```
     <div className="text-center mb-14">
       <h2 className="font-cormorant text-5xl md:text-6xl text-primary">
         Wedding Events
