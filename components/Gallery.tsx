@@ -4,16 +4,16 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const photos = [
-"/wedding1.jpeg", // Hero Image
-"/wedding2.jpeg",
-"/wedding3.jpeg",
+"/Wedding1.jpeg", // Hero Image
+"/Wedding2.jpeg",
+"/Wedding3.jpeg",
 "/Gallery.jpeg",
-"/wedding4.jpeg",
-"/wedding5.jpeg",
-"/wedding6.jpeg",
-"/wedding7.jpeg",
-"/wedding8.jpeg",
-"/wedding9.jpeg",
+"/Wedding4.jpeg",
+"/Wedding5.jpeg",
+"/Wedding6.jpeg",
+"/Wedding7.jpeg",
+"/Wedding8.jpeg",
+"/Wedding9.jpeg",
 ];
 
 export default function Gallery() {
