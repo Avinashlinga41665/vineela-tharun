@@ -22,8 +22,6 @@ export default function Home() {
           {/* Your entire website */}
           <Navbar />
           <Hero />
-          <Gallery />
-          <Events />
           <Location />
           <Contact />
           <Footer />
