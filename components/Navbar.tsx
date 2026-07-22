@@ -23,21 +23,76 @@ export default function Navbar() {
 
   const [playing, setPlaying] = useState(false);
 
-  const toggleMusic = async () => {
-    if (!audioRef.current) return;
+const fadeIn = () => {
+  if (!audioRef.current) return;
+
+  audioRef.current.volume = 0.05;
+
+  let volume = 0.05;
+
+  const interval = setInterval(() => {
+
+    volume += 0.03;
+
+    if (volume >= 0.35) {
+      volume = 0.35;
+      clearInterval(interval);
+    }
+
+    audioRef.current!.volume = volume;
+
+  }, 400);
+};
+useEffect(() => {
+  const startMusic = async () => {
+    if (!audioRef.current || playing) return;
 
     try {
-      if (playing) {
-        audioRef.current.pause();
-      } else {
-        await audioRef.current.play();
-      }
-
-      setPlaying(!playing);
+      await audioRef.current.play();
+      fadeIn();
+      setPlaying(true);
     } catch (err) {
       console.log(err);
     }
+
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("touchstart", startMusic);
   };
+
+  document.addEventListener("click", startMusic);
+  document.addEventListener("touchstart", startMusic);
+
+  return () => {
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+  };
+}, [playing]);
+
+const toggleMusic = async () => {
+
+  if (!audioRef.current) return;
+
+  try {
+
+    if (playing) {
+
+      audioRef.current.pause();
+
+    } else {
+
+      await audioRef.current.play();
+
+      fadeIn();
+
+    }
+
+    setPlaying(!playing);
+
+  } catch (err) {
+    console.log(err);
+  }
+
+};
 
   /* Active Section */
 
@@ -355,34 +410,50 @@ export default function Navbar() {
 
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Right Controls */}
 
-          <button
-            onClick={() => setOpen(true)}
-            className="
-              md:hidden
+<div className="md:hidden flex items-center gap-3">
 
-              flex
-              items-center
-              justify-center
+  {/* Music */}
 
-              h-10
-              w-10
+  <button
+    onClick={toggleMusic}
+    className="
+      text-[#C89B3C]
+      transition-all
+      duration-300
+      hover:scale-110
+    "
+  >
+    {playing ? (
+      <motion.div
+        animate={{
+          scale: [1, 1.12, 1],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 2,
+        }}
+      >
+        <Music2 size={22} />
+      </motion.div>
+    ) : (
+      <VolumeX size={22} />
+    )}
+  </button>
 
-              rounded-full
+  {/* Hamburger */}
 
-              border
-              border-[#D4AF37]/20
+  <button
+    onClick={() => setOpen(true)}
+    className="
+      text-[#4B3725]
+    "
+  >
+    <Menu size={28} />
+  </button>
 
-              bg-white/70
-
-              text-[#4B3725]
-
-              shadow-md
-            "
-          >
-            <Menu size={20} />
-          </button>
+</div>
 
         </div>        {/* ===================================== */}
         {/* Mobile Drawer */}
@@ -413,6 +484,7 @@ export default function Navbar() {
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
+                
                 transition={{
                   type: "spring",
                   stiffness: 120,
@@ -497,40 +569,8 @@ export default function Navbar() {
 
                 <div className="my-10 h-px bg-[#D4AF37]/20" />
 
-                {/* Music */}
 
-                <button
-                  onClick={toggleMusic}
-                  className="
-                    mb-4
-
-                    flex
-                    w-full
-                    items-center
-                    gap-3
-
-                    rounded-xl
-
-                    border
-                    border-[#D4AF37]/20
-
-                    px-4
-                    py-3
-
-                    text-[#4B3725]
-
-                    hover:bg-[#D4AF37]/10
-                  "
-                >
-                  {playing ? (
-                    <Music2 size={18} />
-                  ) : (
-                    <VolumeX size={18} />
-                  )}
-
-                  Background Music
-
-                </button>
+      
 
                 {/* Maps */}
 
@@ -565,7 +605,7 @@ export default function Navbar() {
                 >
                   <MapPin size={18} />
 
-                  Wedding Venue
+                 Venue
 
                 </button>
 
@@ -576,9 +616,7 @@ export default function Navbar() {
         </AnimatePresence>
 
       </motion.nav>
-<audio ref={audioRef} loop>
-  <source src="/music.mp3" type="audio/mpeg" />
-</audio>
+
     </>
   );
 }
