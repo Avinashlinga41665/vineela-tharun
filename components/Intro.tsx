@@ -23,11 +23,7 @@ export default function Intro({
         <>
           {/* BACKGROUND */}
 <div className="fixed inset-0 z-[9998]">
-  <img
-    src="/Wedding1.jpeg"
-    alt=""
-    className="w-full h-full object-cover object-center"
-  />
+
 
   <div className="absolute inset-0 bg-black/40" />
 </div>

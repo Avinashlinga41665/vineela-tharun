@@ -1,9 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { Music2, VolumeX, MapPin } from "lucide-react";
 import Countdown from "@/components/Countdown";
 
 export default function Hero() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+const [playing, setPlaying] = useState(false);
+
+const toggleMusic = () => {
+  if (!audioRef.current) return;
+
+  if (playing) {
+    audioRef.current.pause();
+  } else {
+    audioRef.current.play();
+  }
+
+  setPlaying(!playing);
+};
+
   return (
     <section
       id="home"
@@ -470,7 +488,7 @@ scale-x-[-1]
                 text-lg
               "
             >
-              Muhurtham • 11:30 AM
+              Muhurtham • 11:23 AM
             </p>
 
           </motion.div>
@@ -519,65 +537,8 @@ scale-x-[-1]
           {/* Action Buttons */}
           {/* ===================================== */}
 
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.1 }}
-            className="
-              mt-12
-              flex
-              flex-wrap
-              justify-center
-              gap-5
-            "
-          >
 
-            <a
-              href="#events"
-              className="
-                rounded-full
-                border
-                border-[#CFA84D]
-                bg-[#CFA84D]
-                px-10
-                py-4
-                text-sm
-                tracking-[0.2em]
-                uppercase
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-xl
-              "
-            >
-              Wedding Details
-            </a>
-
-            <a
-              href="#venue"
-              className="
-                rounded-full
-                border
-                border-[#CFA84D]
-                bg-white/60
-                backdrop-blur
-                px-10
-                py-4
-                text-sm
-                tracking-[0.2em]
-                uppercase
-                text-[#8A6931]
-                transition-all
-                duration-300
-                hover:bg-[#CFA84D]
-                hover:text-white
-              "
-            >
-              View Venue
-            </a>
-
-          </motion.div>          {/* ===================================== */}
+       {/* ===================================== */}
           {/* Couple Portrait */}
           {/* ===================================== */}
 
@@ -753,28 +714,9 @@ scale-x-[-1]
         "
       />
 
-      {/* ===================================== */}
-      {/* Final Traditional Ornament */}
-      {/* ===================================== */}
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: .18 }}
-        transition={{ delay: 2.8 }}
-        className="
-          absolute
-          bottom-8
-          left-1/2
-          -translate-x-1/2
-          text-[#C89B3C]
-          text-6xl
-          select-none
-          pointer-events-none
-        "
-      >
-        ❦
-      </motion.div>
-
+<audio ref={audioRef} loop>
+  <source src="/music.mp3" type="audio/mpeg" />
+</audio>
     </section>
   );
 }

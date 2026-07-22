@@ -1,261 +1,584 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Music2,
+  VolumeX,
+  MapPin,
+  Menu,
+  X,
+} from "lucide-react";
 
 const sections = ["home", "venue", "contact"];
 
 export default function Navbar() {
-const [active, setActive] = useState("home");
-const [open, setOpen] = useState(false);
-const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-useEffect(() => {
-const observers: IntersectionObserver[] = [];
+  /* Music */
 
-sections.forEach((id) => {
-  const el = document.getElementById(id);
-  if (!el) return;
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) setActive(id);
-    },
-    {
-      threshold: 0.5,
+  const [playing, setPlaying] = useState(false);
+
+  const toggleMusic = async () => {
+    if (!audioRef.current) return;
+
+    try {
+      if (playing) {
+        audioRef.current.pause();
+      } else {
+        await audioRef.current.play();
+      }
+
+      setPlaying(!playing);
+    } catch (err) {
+      console.log(err);
     }
-  );
+  };
 
-  observer.observe(el);
-  observers.push(observer);
-});
+  /* Active Section */
 
-return () => observers.forEach((obs) => obs.disconnect());
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
 
-}, []);
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
 
-useEffect(() => {
-const handleScroll = () => {
-setScrolled(window.scrollY > 20);
-};
+      if (!el) return;
 
-window.addEventListener("scroll", handleScroll);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActive(id);
+          }
+        },
+        {
+          threshold: 0.55,
+        }
+      );
 
-return () =>
-  window.removeEventListener("scroll", handleScroll);
+      observer.observe(el);
 
-}, []);
+      observers.push(observer);
+    });
 
-return (
-<nav
-className={`
-fixed
-top-0
-left-0
-w-full
-z-[999]
-backdrop-blur-md
-border-b
-border-[#E5D7C6]
-transition-all
-duration-300
+    return () =>
+      observers.forEach((o) => o.disconnect());
 
-    ${
-      scrolled
-        ? "bg-[#FFF8F3]/90 shadow-lg"
-        : "bg-[#FFF8F3]/70"
-    }
-  `}
->
-  {/* Gold Glow */}
-  <div
-    className="
-      absolute
-      left-1/2
-      top-0
-      -translate-x-1/2
-      w-96
-      h-24
-      bg-[#D4AF37]/5
-      blur-3xl
-      pointer-events-none
-    "
-  />
+  }, []);
 
-  {/* Container */}
-  <div className="container-custom flex justify-between items-center py-3 relative z-10">
+  /* Navbar Background */
 
-    {/* Logo */}
-    <h1
-      onClick={() => {
-        document.getElementById("home")?.scrollIntoView({
-          behavior: "smooth",
-        });
-      }}
-      className="
-        cursor-pointer
-        font-cormorant
-        text-xl
-        md:text-2xl
-        text-primary
-        tracking-widest
-        ml-4
-      "
-    >
-      <span className="hidden md:inline">
-        Tharun{" "}
-        <span className="text-[#D4AF37]">&</span>{" "}
-        Vineela
-      </span>
+  useEffect(() => {
 
-      <span className="md:hidden">
-        T <span className="text-[#D4AF37]">&</span> V
-      </span>
-    </h1>
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
 
-    {/* Desktop Menu */}
-    <div className="hidden md:flex gap-8 text-sm">
+    window.addEventListener("scroll", handleScroll);
 
-      {sections.map((sec) => (
-        <a
-          key={sec}
-          href={`#${sec}`}
-          className={`
-            relative
-            group
-            transition-all
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
 
-            ${
-              active === sec
-                ? "text-[#D4AF37]"
-                : "text-muted hover:text-[#D4AF37]"
-            }
-          `}
-        >
-          {sec.charAt(0).toUpperCase() + sec.slice(1)}
+  }, []);
 
-          <span
-            className={`
-              absolute
-              left-0
-              -bottom-1
-              h-[2px]
-              bg-[#D4AF37]
-              transition-all
-              duration-300
+  return (
 
-              ${
-                active === sec
-                  ? "w-full"
-                  : "w-0 group-hover:w-full"
-              }
-            `}
-          />
-        </a>
-      ))}
-    </div>
+    <>
+      <audio ref={audioRef} loop>
+        <source src="/music.mp3" type="audio/mpeg" />
+      </audio>
 
-    {/* Mobile Button */}
-    <button
-      className="
-        md:hidden
-        text-2xl
-        text-primary
-        mr-4
-      "
-      onClick={() => setOpen(true)}
-    >
-      ☰
-    </button>
-  </div>
+      <motion.nav
+        initial={{ y: -80 }}
+        animate={{ y: 0 }}
+        transition={{ duration: .6 }}
+        className={`
+          fixed
+          top-0
+          left-0
+          w-full
+          z-[999]
 
-  {/* Mobile Drawer */}
-  <AnimatePresence>
-    {open && (
-      <>
-        {/* Overlay */}
-        <motion.div
+          border-b
+          border-[#E7D8C3]
+
+          backdrop-blur-xl
+
+          transition-all
+          duration-300
+
+          ${
+            scrolled
+              ? "bg-[#FFF8F3]/95 shadow-xl"
+              : "bg-[#FFF8F3]/75"
+          }
+        `}
+      >        {/* Gold Glow */}
+
+        <div
           className="
-            fixed
-            inset-0
-            bg-black/40
-            backdrop-blur-sm
-            z-40
+            absolute
+            left-1/2
+            top-0
+            -translate-x-1/2
+
+            h-20
+            w-96
+
+            rounded-full
+
+            bg-[#D4AF37]/10
+
+            blur-3xl
+
+            pointer-events-none
           "
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setOpen(false)}
         />
 
-        {/* Drawer */}
-        <motion.div
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{
-            type: "spring",
-            stiffness: 120,
-            damping: 20,
-          }}
+        {/* Container */}
+
+        <div
           className="
-            fixed
-            top-0
-            right-0
-            h-screen
-            w-[75%]
-            max-w-xs
-            bg-[#FFF8F3]
-            z-50
-            shadow-xl
-            p-6
+            relative
+            z-20
+
+            mx-auto
+
             flex
-            flex-col
+            items-center
+            justify-between
+
+            max-w-7xl
+
+            px-6
+            py-4
           "
         >
-          {/* Drawer Header */}
-          <div className="flex justify-between items-center mb-10">
 
-            <h2 className="font-cormorant text-2xl text-primary">
-              Menu
-            </h2>
+          {/* Logo */}
 
-            <button
-              onClick={() => setOpen(false)}
-              className="text-xl text-primary"
-            >
-              ✕
-            </button>
-          </div>
+          <button
+            onClick={() =>
+              document
+                .getElementById("home")
+                ?.scrollIntoView({
+                  behavior: "smooth",
+                })
+            }
+            className="
+              font-cormorant
 
-          {/* Drawer Links */}
-          <div className="flex flex-col gap-6">
+              text-2xl
+
+              tracking-[0.15em]
+
+              text-[#4B3725]
+            "
+          >
+            <span className="hidden md:block">
+              Tharun{" "}
+              <span className="text-[#C89B3C]">
+                &
+              </span>{" "}
+              Vineela
+            </span>
+
+            <span className="md:hidden">
+              T{" "}
+              <span className="text-[#C89B3C]">
+                &
+              </span>{" "}
+              V
+            </span>
+
+          </button>
+
+          {/* Desktop Navigation */}
+
+          <div
+            className="
+              hidden
+              md:flex
+
+              items-center
+
+              gap-10
+            "
+          >
 
             {sections.map((sec) => (
-              <a
+
+              <button
                 key={sec}
-                href={`#${sec}`}
-                onClick={() => setOpen(false)}
+                onClick={() =>
+                  document
+                    .getElementById(sec)
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                    })
+                }
                 className={`
-                  text-lg
+                  relative
+
+                  text-sm
+
+                  tracking-[0.12em]
+
                   transition-all
 
                   ${
                     active === sec
-                      ? "text-[#D4AF37] border-l-4 border-[#D4AF37] pl-3 font-medium"
-                      : "text-muted pl-4"
+                      ? "text-[#C89B3C]"
+                      : "text-[#6E5A47] hover:text-[#C89B3C]"
                   }
                 `}
               >
-                {sec.charAt(0).toUpperCase() + sec.slice(1)}
-              </a>
-            ))}
-          </div>
-        </motion.div>
-      </>
-    )}
-  </AnimatePresence>
-</nav>
 
-);
+                {sec.charAt(0).toUpperCase() +
+                  sec.slice(1)}
+
+                <span
+                  className={`
+                    absolute
+                    left-0
+                    -bottom-1
+
+                    h-[2px]
+
+                    bg-[#C89B3C]
+
+                    transition-all
+                    duration-300
+
+                    ${
+                      active === sec
+                        ? "w-full"
+                        : "w-0"
+                    }
+                  `}
+                />
+
+              </button>
+
+            ))}            {/* Music Button */}
+
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleMusic}
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+
+                rounded-full
+
+                border
+                border-[#D4AF37]/20
+
+                bg-white/70
+
+                text-[#C89B3C]
+
+                shadow-md
+
+                transition-all
+                duration-300
+
+                hover:bg-[#C89B3C]
+                hover:text-white
+              "
+            >
+              {playing ? (
+                <motion.div
+                  animate={{
+                    scale: [1, 1.15, 1],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1.8,
+                  }}
+                >
+                  <Music2 size={18} />
+                </motion.div>
+              ) : (
+                <VolumeX size={18} />
+              )}
+            </motion.button>
+
+            {/* Maps Button */}
+
+<motion.button
+  whileHover={{ scale: 1.08 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() =>
+    window.open(
+      "https://maps.app.goo.gl/AGjjpEv1c4byyqjD9",
+      "_blank"
+    )
+  }
+  className="
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+
+    rounded-full
+
+    border
+    border-[#D4AF37]/20
+
+    bg-[#FFFDF9]/80
+
+    text-[#C89B3C]
+
+    shadow-md
+
+    transition-all
+    duration-300
+
+    hover:bg-[#C89B3C]
+    hover:text-white
+    hover:scale-110
+    hover:shadow-[0_0_25px_rgba(212,175,55,.45)]
+  "
+>
+  <MapPin size={18} />
+</motion.button>
+
+          </div>
+
+          {/* Mobile Menu Button */}
+
+          <button
+            onClick={() => setOpen(true)}
+            className="
+              md:hidden
+
+              flex
+              items-center
+              justify-center
+
+              h-10
+              w-10
+
+              rounded-full
+
+              border
+              border-[#D4AF37]/20
+
+              bg-white/70
+
+              text-[#4B3725]
+
+              shadow-md
+            "
+          >
+            <Menu size={20} />
+          </button>
+
+        </div>        {/* ===================================== */}
+        {/* Mobile Drawer */}
+        {/* ===================================== */}
+
+        <AnimatePresence>
+          {open && (
+            <>
+              {/* Overlay */}
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setOpen(false)}
+                className="
+                  fixed
+                  inset-0
+                  bg-black/40
+                  backdrop-blur-sm
+                  z-40
+                "
+              />
+
+              {/* Drawer */}
+
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 18,
+                }}
+                className="
+                  fixed
+                  top-0
+                  right-0
+
+                  h-screen
+                  w-[78%]
+                  max-w-xs
+
+                  bg-[#FFF8F3]
+
+                  shadow-2xl
+
+                  z-50
+
+                  p-8
+                "
+              >
+
+                {/* Header */}
+
+                <div className="flex items-center justify-between mb-10">
+
+                  <h2 className="font-cormorant text-3xl text-[#4B3725]">
+                    Menu
+                  </h2>
+
+                  <button
+                    onClick={() => setOpen(false)}
+                    className="text-[#4B3725]"
+                  >
+                    <X size={24} />
+                  </button>
+
+                </div>
+
+                {/* Links */}
+
+                <div className="flex flex-col gap-6">
+
+                  {sections.map((sec) => (
+
+                    <button
+                      key={sec}
+                      onClick={() => {
+                        document
+                          .getElementById(sec)
+                          ?.scrollIntoView({
+                            behavior: "smooth",
+                          });
+
+                        setOpen(false);
+                      }}
+                      className={`
+                        text-left
+
+                        text-lg
+
+                        transition-all
+
+                        ${
+                          active === sec
+                            ? "text-[#C89B3C]"
+                            : "text-[#5F4B39]"
+                        }
+                      `}
+                    >
+                      {sec.charAt(0).toUpperCase() +
+                        sec.slice(1)}
+                    </button>
+
+                  ))}
+
+                </div>
+
+                {/* Divider */}
+
+                <div className="my-10 h-px bg-[#D4AF37]/20" />
+
+                {/* Music */}
+
+                <button
+                  onClick={toggleMusic}
+                  className="
+                    mb-4
+
+                    flex
+                    w-full
+                    items-center
+                    gap-3
+
+                    rounded-xl
+
+                    border
+                    border-[#D4AF37]/20
+
+                    px-4
+                    py-3
+
+                    text-[#4B3725]
+
+                    hover:bg-[#D4AF37]/10
+                  "
+                >
+                  {playing ? (
+                    <Music2 size={18} />
+                  ) : (
+                    <VolumeX size={18} />
+                  )}
+
+                  Background Music
+
+                </button>
+
+                {/* Maps */}
+
+                <button
+                  onClick={() => {
+                    document
+                      .getElementById("venue")
+                      ?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+
+                    setOpen(false);
+                  }}
+                  className="
+                    flex
+                    w-full
+                    items-center
+                    gap-3
+
+                    rounded-xl
+
+                    border
+                    border-[#D4AF37]/20
+
+                    px-4
+                    py-3
+
+                    text-[#4B3725]
+
+                    hover:bg-[#D4AF37]/10
+                  "
+                >
+                  <MapPin size={18} />
+
+                  Wedding Venue
+
+                </button>
+
+              </motion.div>
+
+            </>
+          )}
+        </AnimatePresence>
+
+      </motion.nav>
+<audio ref={audioRef} loop>
+  <source src="/music.mp3" type="audio/mpeg" />
+</audio>
+    </>
+  );
 }

@@ -42,7 +42,7 @@ export default function Countdown() {
           </p>
 
           {/* Label */}
-          <p className="text-xs uppercase tracking-[0.05em] text-white mt-1">
+          <p className="text-xs uppercase tracking-[0.05em] text-black mt-1">
             {label}
           </p>
 

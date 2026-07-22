@@ -1,432 +1,595 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Countdown from "@/components/Countdown";
 
-export default function Hero() {
+export default function Location() {
   return (
     <section
-      id="home"
-      className="relative min-h-screen overflow-hidden bg-[#faf6ef]"
+      id="venue"
+      className="relative overflow-hidden bg-[#fbf8f2] py-32"
     >
-      {/* ============================= */}
-      {/* Background Paper Texture */}
-      {/* ============================= */}
+      {/* ===================================== */}
+      {/* Paper Texture */}
+      {/* ===================================== */}
 
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-100"
+        className="absolute inset-0 bg-cover bg-center opacity-90"
         style={{
           backgroundImage: "url('/paper-texture.jpg')",
         }}
       />
 
-      {/* Watercolor Overlay */}
+      {/* Soft White Overlay */}
+
       <div
-        className="absolute inset-0 opacity-60"
+        className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at top,#fff8ef 0%,#f8efe1 45%,#f2e5d1 100%)",
+            "linear-gradient(to bottom,#fffefb 0%,#fbf8f2 40%,#f8f2e8 100%)",
         }}
       />
 
-      {/* Gold Glow */}
-      <div className="absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D4AF37]/10 blur-[180px]" />
-
-      {/* Top Left Floral */}
-      <img
-        src="/floral-top-left.png"
-        alt=""
-        className="absolute left-0 top-0 w-40 md:w-64 opacity-40 pointer-events-none select-none"
-      />
-
-      {/* Top Right Floral */}
-      <img
-        src="/floral-top-right.png"
-        alt=""
-        className="absolute right-0 top-0 w-40 md:w-64 opacity-40 pointer-events-none select-none scale-x-[-1]"
-      />
-
-      {/* Bottom Left Floral */}
-      <img
-        src="/floral-bottom-left.png"
-        alt=""
-        className="absolute bottom-0 left-0 w-44 md:w-72 opacity-40 pointer-events-none select-none"
-      />
-
-      {/* Bottom Right Floral */}
-      <img
-        src="/floral-bottom-right.png"
-        alt=""
-        className="absolute bottom-0 right-0 w-44 md:w-72 opacity-40 pointer-events-none select-none scale-x-[-1]"
-      />
-
-      {/* Floating Gold Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(18)].map((_, i) => (
-          <motion.span
-            key={i}
-            className="absolute h-1.5 w-1.5 rounded-full bg-[#D4AF37]/70"
-            initial={{
-              opacity: 0,
-              y: "100vh",
-              x: `${Math.random() * 100}vw`,
-            }}
-            animate={{
-              y: "-20vh",
-              opacity: [0, 0.8, 0],
-            }}
-            transition={{
-              duration: 14 + Math.random() * 10,
-              repeat: Infinity,
-              delay: Math.random() * 6,
-              ease: "linear",
-            }}
-          />
-        ))}
-      </div>      {/* ===================================== */}
-      {/* Couple Sketches */}
+      {/* ===================================== */}
+      {/* Temple Background */}
       {/* ===================================== */}
 
       <motion.img
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 0.18, x: 0 }}
-        transition={{ duration: 1.5 }}
-        src="/left-sketch.png"
+        src="/temple-outline.png"
         alt=""
+        initial={{ opacity: 0, scale: 1.05 }}
+        whileInView={{ opacity: .10, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
         className="
-          hidden
-          lg:block
           absolute
-          left-6
-          bottom-0
-          w-[320px]
-          xl:w-[380px]
+          left-1/2
+          top-0
+          -translate-x-1/2
+          w-[1300px]
+          max-w-none
           pointer-events-none
           select-none
-          z-10
         "
       />
+
+      {/* Temple Glow */}
+
+      <div
+        className="
+          absolute
+          left-1/2
+          top-44
+          -translate-x-1/2
+          h-[700px]
+          w-[700px]
+          rounded-full
+          bg-[#D4AF37]/10
+          blur-[170px]
+          pointer-events-none
+        "
+      />
+
+      {/* ===================================== */}
+      {/* Banana Leaves */}
+      {/* ===================================== */}
 
       <motion.img
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 0.18, x: 0 }}
-        transition={{ duration: 1.5 }}
-        src="/right-sketch.png"
+        src="/banana-left.png"
         alt=""
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
         className="
-          hidden
-          lg:block
           absolute
-          right-6
-          bottom-0
-          w-[320px]
-          xl:w-[380px]
+
+          top-[40px]
+          left-[-70px]
+          w-[220px]
+
+          md:top-[35px]
+          md:left-[-100px]
+          md:w-[320px]
+
+          lg:left-[-125px]
+          lg:w-[390px]
+
+          xl:left-[-140px]
+          xl:w-[430px]
+
           pointer-events-none
           select-none
-          z-10
+          z-0
+        "
+      />      <motion.img
+        src="/banana-left.png"
+        alt=""
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="
+          absolute
+          scale-x-[-1]
+
+          top-[40px]
+          right-[-70px]
+          w-[220px]
+
+          md:top-[35px]
+          md:right-[-100px]
+          md:w-[320px]
+
+          lg:right-[-125px]
+          lg:w-[390px]
+
+          xl:right-[-140px]
+          xl:w-[430px]
+
+          pointer-events-none
+          select-none
+          z-0
         "
       />
 
-      {/* Center Content */}
-      <div className="relative z-20 flex min-h-screen items-center justify-center px-6">
+      {/* ===================================== */}
+      {/* Ganesha */}
+      {/* ===================================== */}
 
-        <div className="max-w-4xl text-center">
+      <motion.img
+        src="/ganesha-emblem.png"
+        alt=""
+        initial={{ opacity: 0, scale: .8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="
+          absolute
+          left-1/2
+          top-16
+          -translate-x-1/2
+          w-24
+          md:w-32
+          pointer-events-none
+          select-none
+          z-20
+        "
+      />
 
-          {/* Small Heading */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: .8 }}
-            className="
-              uppercase
-              tracking-[0.45em]
-              text-[#b18a2c]
-              text-xs
-              md:text-sm
-              mb-6
-            "
-          >
-            Together With Our Families
-          </motion.p>
+      <div
+        className="
+          absolute
+          left-1/2
+          top-20
+          -translate-x-1/2
+          h-36
+          w-36
+          rounded-full
+          bg-[#D4AF37]/20
+          blur-[70px]
+          pointer-events-none
+        "
+      />
 
-          {/* Decorative Line */}
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: 140 }}
-            transition={{ delay: .4, duration: .8 }}
-            className="h-[2px] bg-[#D4AF37] mx-auto mb-10"
-          />
+      {/* ===================================== */}
+      {/* Floating Petals */}
+      {/* ===================================== */}
 
-          {/* Invitation Text */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: .5 }}
-            className="
-              text-[#8b6a24]
-              italic
-              text-lg
-              md:text-xl
-              mb-5
-            "
-          >
-            Joyfully Invite You To Celebrate
-          </motion.p>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
 
-          {/* Bride Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: .7 }}
-            className="
-              font-cormorant
-              text-[#5A4533]
-              text-6xl
-              md:text-8xl
-              leading-none
-            "
-          >
-            Vineela
-          </motion.h1>
+        {[...Array(14)].map((_, i) => (
 
-          {/* Ampersand */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: .9 }}
-            className="
-              my-5
-              font-cormorant
-              text-[#C89B3C]
-              text-5xl
-              md:text-7xl
-            "
-          >
-            &
-          </motion.div>          {/* Groom Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="
-              font-cormorant
-              text-[#5A4533]
-              text-6xl
-              md:text-8xl
-              leading-none
-              mb-8
-            "
-          >
-            Tharun
-          </motion.h1>
-
-          {/* Decorative Divider */}
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: 1.2 }}
-            className="flex items-center justify-center gap-4 mb-8"
-          >
-            <div className="w-16 h-px bg-[#D4AF37]" />
-            <span className="text-[#C89B3C] text-xl">❦</span>
-            <div className="w-16 h-px bg-[#D4AF37]" />
-          </motion.div>
-
-          {/* Invitation Message */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.3 }}
-            className="
-              max-w-2xl
-              mx-auto
-              text-[#6d5846]
-              text-base
-              md:text-lg
-              leading-8
-              mb-10
-            "
-          >
-            Request the honour of your gracious presence as we begin
-            the most beautiful chapter of our lives together and
-            celebrate our wedding with love, laughter and blessings.
-          </motion.p>
-
-          {/* Wedding Date */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 }}
-            className="space-y-2 mb-12"
-          >
-            <p className="uppercase tracking-[0.35em] text-[#b18a2c] text-xs">
-              Wedding Ceremony
-            </p>
-
-            <h2 className="font-cormorant text-[#5A4533] text-4xl md:text-5xl">
-              Sunday
-            </h2>
-
-            <p className="text-[#8b6a24] text-lg md:text-xl tracking-widest">
-              23 AUGUST 2026
-            </p>
-
-            <p className="text-[#6d5846] italic">
-              Muhurtham • 11:30 AM
-            </p>
-          </motion.div>
-
-          {/* Countdown Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.7 }}
-            className="
-              mx-auto
-              max-w-3xl
-              rounded-[32px]
-              border
-              border-[#D4AF37]/20
-              bg-white/40
-              backdrop-blur-xl
-              shadow-[0_20px_60px_rgba(0,0,0,0.08)]
-              p-8
-              mb-10
-            "
-          >
-            <Countdown />
-          </motion.div>          {/* Save The Date */}
-          <motion.div
-            initial={{ opacity: 0, scale: .8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 2 }}
-            className="mb-8"
-          >
-            <div
-              className="
-                inline-flex
-                items-center
-                gap-4
-                rounded-full
-                border
-                border-[#D4AF37]/25
-                bg-white/50
-                px-8
-                py-3
-                backdrop-blur-md
-              "
-            >
-              <div className="h-px w-10 bg-[#D4AF37]" />
-
-              <span
-                className="
-                  uppercase
-                  tracking-[0.35em]
-                  text-xs
-                  text-[#b18a2c]
-                "
-              >
-                Save The Date
-              </span>
-
-              <div className="h-px w-10 bg-[#D4AF37]" />
-            </div>
-          </motion.div>
-
-          {/* Quote */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.2 }}
-            className="
-              max-w-2xl
-              mx-auto
-              text-[#7a6652]
-              italic
-              text-base
-              md:text-lg
-              leading-8
-              mb-14
-            "
-          >
-            "Two hearts, one promise, and a lifetime of beautiful memories
-            waiting to unfold. Your presence will make our celebration even
-            more special."
-          </motion.p>
-
-          {/* Decorative Divider */}
-          <motion.div
-            initial={{ opacity: 0, width: 0 }}
-            animate={{ opacity: 1, width: 220 }}
-            transition={{ delay: 2.4 }}
-            className="mx-auto mb-10"
-          >
-            <div className="flex items-center justify-center gap-3">
-              <div className="h-px flex-1 bg-[#D4AF37]" />
-              <span className="text-[#C89B3C] text-lg">✦</span>
-              <span className="text-[#C89B3C] text-xl">❦</span>
-              <span className="text-[#C89B3C] text-lg">✦</span>
-              <div className="h-px flex-1 bg-[#D4AF37]" />
-            </div>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
+          <motion.img
+            key={i}
+            src="/petal.png"
+            alt=""
+            className="absolute w-6"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `-${Math.random() * 20}%`,
+            }}
             animate={{
-              y: [0, 10, 0],
+              y: ["0vh", "120vh"],
+              x: [0, -15, 20, -10, 0],
+              rotate: [0, 180, 360],
+              opacity: [0, .8, .8, 0],
             }}
             transition={{
+              duration: 14 + Math.random() * 6,
               repeat: Infinity,
-              duration: 2,
+              delay: Math.random() * 8,
+              ease: "linear",
             }}
-            className="flex flex-col items-center"
-          >
-            <span
-              className="
-                text-[11px]
-                uppercase
-                tracking-[0.35em]
-                text-[#b18a2c]
-                mb-3
-              "
-            >
-              Scroll To Explore
-            </span>
+          />
+
+        ))}
+
+      </div>
+
+      {/* ===================================== */}
+      {/* Main Content */}
+      {/* ===================================== */}
+
+      <div className="relative z-30 mx-auto max-w-5xl px-6 text-center">        {/* ===================================== */}
+        {/* Telugu Heading */}
+        {/* ===================================== */}
+
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: .7 }}
+          className="
+            text-[#A67C2E]
+            text-xl
+            md:text-2xl
+            tracking-[0.35em]
+            mb-5
+          "
+        >
+          శ్రీ
+        </motion.p>
+
+        {/* Section Title */}
+
+        <motion.h2
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: .2 }}
+          className="
+            font-cormorant
+            text-[#4B3725]
+            text-5xl
+            md:text-7xl
+            font-semibold
+          "
+        >
+          Wedding Venue
+        </motion.h2>
+
+        {/* Gold Divider */}
+
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: .3 }}
+          className="flex justify-center my-8"
+        >
+          <img
+            src="/gold-divider.png"
+            alt=""
+            className="w-60 md:w-72"
+          />
+        </motion.div>
+
+        {/* Venue Name */}
+
+        <motion.h3
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: .4 }}
+          className="
+            font-cormorant
+            text-[#5A4533]
+            text-4xl
+            md:text-6xl
+            leading-tight
+          "
+        >
+          Sri Madhura
+          <br />
+          Banquet Hall
+        </motion.h3>
+
+        {/* City */}
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: .5 }}
+          className="
+            mt-5
+            uppercase
+            tracking-[0.35em]
+            text-[#B38834]
+            text-sm
+          "
+        >
+          Vanasthalipuram • Hyderabad
+        </motion.p>
+
+        {/* Description */}
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: .6 }}
+          className="
+            mx-auto
+            mt-10
+            max-w-3xl
+            text-[#6B5946]
+            leading-9
+            text-base
+            md:text-lg
+          "
+        >
+          We warmly invite you to join us at
+          <span className="font-semibold text-[#8B6A2D]">
+            {" "}Sri Madhura Banquet Hall{" "}
+          </span>
+          as we celebrate our wedding amidst the
+          blessings of our families, friends and loved ones.
+        </motion.p>        {/* ===================================== */}
+        {/* Venue Information Card */}
+        {/* ===================================== */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: .7 }}
+          className="
+            mt-20
+            mx-auto
+            max-w-4xl
+            rounded-[36px]
+            border
+            border-[#D4AF37]/20
+            bg-white/60
+            backdrop-blur-xl
+            shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+            overflow-hidden
+          "
+        >
+
+          {/* Top */}
+
+          <div className="px-10 py-12">
+
+            {/* Address */}
+
+            <div className="mb-10">
+
+              <p className="uppercase tracking-[0.3em] text-[#B38834] text-xs mb-3">
+                Venue Address
+              </p>
+
+              <h4
+                className="
+                  font-cormorant
+                  text-[#4B3725]
+                  text-3xl
+                  md:text-4xl
+                  mb-4
+                "
+              >
+                Sri Madhura Banquet Hall
+              </h4>
+
+              <p
+                className="
+                  text-[#6A5745]
+                  leading-8
+                  text-base
+                  md:text-lg
+                "
+              >
+                3rd floor, Bommidi Elite Towers
+                <br />
+                NTR Circle, Golden Tobaco Colony, Prashanth Nagar
+                <br />
+                Hyderabad,
+                Telangana.
+              </p>
+
+            </div>
+
+            {/* Divider */}
+
+            <div className="flex justify-center my-8">
+
+              <img
+                src="/gold-divider.png"
+                alt=""
+                className="w-48 opacity-80"
+              />
+
+            </div>
+
+            {/* Date Time Grid */}
 
             <div
               className="
-                h-14
-                w-8
-                rounded-full
-                border-2
-                border-[#D4AF37]/60
-                flex
-                justify-center
-                pt-2
+                grid
+                grid-cols-1
+                md:grid-cols-2
+                gap-10
               "
             >
-              <motion.div
-                animate={{
-                  y: [0, 16, 0],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 1.8,
-                }}
-                className="
-                  h-2
-                  w-2
-                  rounded-full
-                  bg-[#D4AF37]
-                "
-              />
-            </div>
-          </motion.div>
 
-        </div>
-      </div>      {/* ================================ */}
-      {/* Bottom Luxury Glow */}
-      {/* ================================ */}
+              <div>
+
+                <p className="uppercase tracking-[0.3em] text-[#B38834] text-xs mb-3">
+                  Wedding Date
+                </p>
+
+                <h5
+                  className="
+                    font-cormorant
+                    text-[#4B3725]
+                    text-3xl
+                  "
+                >
+                  23 August 2026
+                </h5>
+
+                <p className="text-[#7A6652] mt-2">
+                  Sunday
+                </p>
+
+              </div>
+
+              <div>
+
+                <p className="uppercase tracking-[0.3em] text-[#B38834] text-xs mb-3">
+                  Muhurtham
+                </p>
+
+                <h5
+                  className="
+                    font-cormorant
+                    text-[#4B3725]
+                    text-3xl
+                  "
+                >
+                  11:23 AM
+                </h5>
+
+                <p className="text-[#7A6652] mt-2">
+                  Followed by Lunch
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>          {/* ===================================== */}
+          {/* Bottom Divider */}
+          {/* ===================================== */}
+
+          <div className="flex justify-center pb-10">
+
+            <img
+              src="/gold-divider.png"
+              alt=""
+              className="w-48 opacity-80"
+            />
+
+          </div>
+
+        </motion.div>
+
+        {/* ===================================== */}
+        {/* Google Maps Button */}
+        {/* ===================================== */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: .9 }}
+          className="
+            mt-16
+            flex
+            justify-center
+          "
+        >
+
+          <a
+            href="https://maps.app.goo.gl/THtnHf2mX4XUkHYy6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex
+              items-center
+              gap-4
+
+              rounded-full
+
+              border
+              border-[#D4AF37]/40
+
+              bg-[#C89B3C]
+
+              px-10
+              py-5
+
+              text-white
+
+              uppercase
+              tracking-[0.25em]
+              text-sm
+
+              shadow-[0_15px_40px_rgba(212,175,55,.25)]
+
+              transition-all
+              duration-300
+
+              hover:-translate-y-1
+              hover:shadow-[0_20px_50px_rgba(212,175,55,.35)]
+            "
+          >
+
+            <span className="text-xl">
+              📍
+            </span>
+
+            Get Directions
+
+          </a>
+
+        </motion.div>
+
+        {/* ===================================== */}
+        {/* Helpful Note */}
+        {/* ===================================== */}
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 1 }}
+          className="
+            mx-auto
+            mt-8
+            max-w-xl
+
+            text-center
+
+            text-[#75624E]
+            italic
+
+            leading-8
+          "
+        >
+          We look forward to celebrating this
+          joyous occasion with your presence.
+          Wishing you a pleasant journey to
+          the venue.
+        </motion.p>
+
+      </div>
+
+      {/* ===================================== */}
+      {/* Temple Mist */}
+      {/* ===================================== */}
+
+      <div
+        className="
+          absolute
+          bottom-0
+          inset-x-0
+          h-56
+
+          bg-gradient-to-t
+
+          from-[#fbf8f2]
+          via-[#fbf8f2]/70
+          to-transparent
+
+          pointer-events-none
+        "
+      />
+
+      {/* ===================================== */}
+      {/* Bottom Glow */}
+      {/* ===================================== */}
 
       <div
         className="
@@ -434,83 +597,159 @@ export default function Hero() {
           bottom-[-180px]
           left-1/2
           -translate-x-1/2
+
           h-[420px]
           w-[900px]
+
           rounded-full
+
           bg-[#D4AF37]/10
+
           blur-[150px]
+
           pointer-events-none
+        "
+      />      {/* ===================================== */}
+      {/* Sacred Cows */}
+      {/* ===================================== */}
+
+      <motion.img
+        src="/cow-left.png"
+        alt=""
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1 }}
+        className="
+          absolute
+
+          left-[-10px]
+          bottom-[-10px]
+
+          w-[110px]
+
+          sm:w-[150px]
+          md:w-[180px]
+          lg:w-[210px]
+
+          scale-x-[-1]
+
+          pointer-events-none
+          select-none
         "
       />
 
-      {/* Watercolor Bottom Fade */}
-      <div
+      <motion.img
+        src="/cow-left.png"
+        alt=""
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1 }}
+        className="
+          absolute
+
+          right-[-10px]
+          bottom-[-10px]
+
+          w-[110px]
+
+          sm:w-[150px]
+          md:w-[180px]
+          lg:w-[210px]
+
+          pointer-events-none
+          select-none
+        "
+      />
+
+      {/* ===================================== */}
+      {/* Flower Bed */}
+      {/* ===================================== */}
+
+      <img
+        src="/flower-bed.png"
+        alt=""
         className="
           absolute
           bottom-0
-          inset-x-0
-          h-40
-          bg-gradient-to-t
-          from-[#faf6ef]
-          via-[#faf6ef]/70
-          to-transparent
+          left-0
+          w-full
           pointer-events-none
+          select-none
+          opacity-90
         "
       />
 
-      {/* Extra Floating Decorative Dots */}
+      {/* ===================================== */}
+      {/* Floating Gold Dust */}
+      {/* ===================================== */}
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
+
+        {[...Array(12)].map((_, i) => (
+
           <motion.div
-            key={`gold-${i}`}
+            key={i}
             className="absolute rounded-full bg-[#D4AF37]/40"
             style={{
-              width: `${4 + Math.random() * 5}px`,
-              height: `${4 + Math.random() * 5}px`,
+              width: `${4 + Math.random() * 4}px`,
+              height: `${4 + Math.random() * 4}px`,
               left: `${Math.random() * 100}%`,
               top: `${20 + Math.random() * 70}%`,
             }}
             animate={{
-              y: [0, -18, 0],
-              opacity: [0.2, 0.8, 0.2],
+              y: [0, -20, 0],
+              opacity: [.2, .8, .2],
             }}
             transition={{
-              duration: 4 + Math.random() * 4,
+              duration: 4 + Math.random() * 3,
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: Math.random() * 4,
             }}
           />
+
         ))}
+
       </div>
 
-      {/* Decorative Bottom Flourish */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.15 }}
-        transition={{ delay: 2.5 }}
-        className="
-          absolute
-          bottom-6
-          left-1/2
-          -translate-x-1/2
-          text-[#C89B3C]
-          text-5xl
-          select-none
-          pointer-events-none
-        "
-      >
-        ❦
-      </motion.div>
-
+      {/* ===================================== */}
       {/* Soft Vignette */}
+      {/* ===================================== */}
+
       <div
         className="
           absolute
           inset-0
-          shadow-[inset_0_0_180px_rgba(0,0,0,0.05)]
+          shadow-[inset_0_0_180px_rgba(0,0,0,.05)]
           pointer-events-none
         "
       />
+
+      {/* ===================================== */}
+      {/* Bottom Ornament */}
+      {/* ===================================== */}
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: .15 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.2 }}
+        className="
+          absolute
+          bottom-8
+          left-1/2
+          -translate-x-1/2
+
+          text-[#C89B3C]
+          text-5xl
+
+          pointer-events-none
+          select-none
+        "
+      >
+        ❦
+      </motion.div>
 
     </section>
   );
