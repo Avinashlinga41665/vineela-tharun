@@ -67,6 +67,37 @@ useEffect(() => {
     document.removeEventListener("touchstart", startMusic);
   };
 }, [playing]);
+useEffect(() => {
+  const handleVisibilityChange = async () => {
+    if (!audioRef.current) return;
+
+    if (document.hidden) {
+      // Browser tab is hidden
+      audioRef.current.pause();
+    } else {
+      // Browser tab is active again
+      if (playing) {
+        try {
+          await audioRef.current.play();
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    }
+  };
+
+  document.addEventListener(
+    "visibilitychange",
+    handleVisibilityChange
+  );
+
+  return () => {
+    document.removeEventListener(
+      "visibilitychange",
+      handleVisibilityChange
+    );
+  };
+}, [playing]);
 
 const toggleMusic = async () => {
 
