@@ -26,22 +26,21 @@ export default function Navbar() {
 const fadeIn = () => {
   if (!audioRef.current) return;
 
-  audioRef.current.volume = 0.05;
-
-  let volume = 0.05;
+  let volume = 0.10;
+  audioRef.current.volume = volume;
 
   const interval = setInterval(() => {
-
-    volume += 0.03;
+    volume += 0.01;
 
     if (volume >= 0.35) {
       volume = 0.35;
       clearInterval(interval);
     }
 
-    audioRef.current!.volume = volume;
-
-  }, 400);
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, 150);
 };
 useEffect(() => {
   const startMusic = async () => {
