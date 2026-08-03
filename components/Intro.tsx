@@ -100,7 +100,7 @@ export default function Intro({
   />
 
   <h1 className="font-greatVibes text-4xl md:text-7xl text-[#2C2C2C]">
-    Tharun
+    Tarun
   </h1>
 
   <p className="text-[#D4AF37] tracking-[0.25em] my-2">

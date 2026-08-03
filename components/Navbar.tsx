@@ -33,7 +33,7 @@ const fadeIn = () => {
     volume += 0.01;
 
     if (volume >= 0.35) {
-      volume = 0.35;
+      volume = 0.45;
       clearInterval(interval);
     }
 

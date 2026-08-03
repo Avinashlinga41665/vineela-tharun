@@ -11,9 +11,9 @@ const contacts = [
   },
   {
     family: "Groom's Family",
-    name: "Tharun",
-    phone: "+91 9999999999",
-    whatsapp: "919999999999",
+    name: "Tarun",
+    phone: "+91 9848817265",
+    whatsapp: "919848817265",
   },
 ];
 
@@ -310,7 +310,7 @@ export default function Contact() {
             leading-tight
           "
         >
-          Vineela & Tharun
+          Vineela & Tarun
         </motion.h3>
 
         <motion.p

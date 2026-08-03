@@ -174,7 +174,7 @@ scale-x-[-1]
         className="
           absolute
           left-1/2
-          top-14
+          top-16
           -translate-x-1/2
           w-28
           md:w-36
@@ -395,7 +395,7 @@ scale-x-[-1]
               tracking-wide
             "
           >
-            Tharun
+            Tarun
           </motion.h1>
 
           {/* Family Text */}
@@ -714,9 +714,7 @@ scale-x-[-1]
         "
       />
 
-<audio ref={audioRef} loop>
-  <source src="/music.mp3" type="audio/mpeg" />
-</audio>
+
     </section>
   );
 }
