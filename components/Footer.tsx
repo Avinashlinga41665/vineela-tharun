@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="w-12 h-0.5 bg-[#D4AF37] mx-auto mb-4" />
 
  {/* Codeweave Credit */}
-          <div className="mt-8 text-center">
+          <div className="mt-10 text-center">
 
             <p className="text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]-light/30">
               Designed & Developed By
