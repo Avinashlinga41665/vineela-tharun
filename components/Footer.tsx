@@ -19,19 +19,24 @@ export default function Footer() {
         {/* Divider */}
         <div className="w-12 h-0.5 bg-[#D4AF37] mx-auto mb-4" />
 
-        {/* Credit */}
-        <p className="text-gray-500 text-sm">
-          Designed & Developed by{" "}
-          <a
-            href="https://myportfolio-rouge-zeta.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#D4AF37] hover:underline"
-          >
-            CodeWeave
-          </a>
-        </p>
+ {/* Codeweave Credit */}
+          <div className="mt-8 text-center">
 
+            <p className="text-[8px] uppercase tracking-[0.3em] text-[#D4AF37]-light/30">
+              Designed & Developed By
+            </p>
+
+            <a href="https://myportfolio-rouge-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block mt-2">
+              <h4 className="mt-1 inline-block font-serif text-m tracking-[0.12em] text-gold-light transition hover:text-[#D4AF37]-light">
+                Codeweave
+              </h4>
+            </a>
+
+            <p className="text-white text-sm mt-2">
+              Crafting modern digital experiences.
+            </p>
+
+          </div>
       </div>
     </footer>
   );
