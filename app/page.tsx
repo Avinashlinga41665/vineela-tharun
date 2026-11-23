@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Hero from "@/components/Hero";
+import Events from "@/components/Events";
 import Location from "@/components/Location";
+import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
@@ -21,6 +23,7 @@ export default function Home() {
           <Navbar />
           <Hero />
           <Location />
+          <Contact />
           <Footer />
         </>
       )}

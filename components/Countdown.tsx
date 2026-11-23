@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function Countdown() {
-  const targetDate = new Date("2026-12-03T06:00:00").getTime();
+  const targetDate = new Date("2026-08-23T00:00:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -42,7 +42,7 @@ export default function Countdown() {
           </p>
 
           {/* Label */}
-          <p className="text-xs uppercase tracking-wider text-black mt-1">
+          <p className="text-xs uppercase tracking-[0.05em] text-black mt-1">
             {label}
           </p>
 

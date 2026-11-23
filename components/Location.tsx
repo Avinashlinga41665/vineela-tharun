@@ -210,8 +210,25 @@ export default function Location() {
       {/* Main Content */}
       {/* ===================================== */}
 
-      <div className="relative z-30 mx-auto max-w-5xl px-6 text-center">
+      <div className="relative z-30 mx-auto max-w-5xl px-6 text-center">        {/* ===================================== */}
+        {/* Telugu Heading */}
+        {/* ===================================== */}
 
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: .7 }}
+          className="
+            text-[#A67C2E]
+            text-xl
+            md:text-2xl
+            tracking-[0.35em]
+            mb-5
+          "
+        >
+          శ్రీ
+        </motion.p>
 
         {/* Section Title */}
 
@@ -262,9 +279,9 @@ export default function Location() {
             leading-tight
           "
         >
-          Raja Rani
+          Sri Madhura
           <br />
-          Function hall
+          Banquet Hall
         </motion.h3>
 
         {/* City */}
@@ -282,7 +299,7 @@ export default function Location() {
             text-sm
           "
         >
-          Jangareddygudem • Andhra Pradesh
+          Vanasthalipuram • Hyderabad
         </motion.p>
 
         {/* Description */}
@@ -304,7 +321,7 @@ export default function Location() {
         >
           We warmly invite you to join us at
           <span className="font-semibold text-[#8B6A2D]">
-            {" "}Raja Rani Function hall{" "}
+            {" "}Sri Madhura Banquet Hall{" "}
           </span>
           as we celebrate our wedding amidst the
           blessings of our families, friends and loved ones.
@@ -352,7 +369,7 @@ export default function Location() {
                   mb-4
                 "
               >
-                Raja Rani Function hall
+                Sri Madhura Banquet Hall
               </h4>
 
               <p
@@ -365,10 +382,10 @@ export default function Location() {
               >
                 3rd floor, Bommidi Elite Towers
                 <br />
-                Buttayagudam Road (48M3+CVR)
+                NTR Circle, Golden Tobaco Colony, Prashanth Nagar
                 <br />
-                Jangareddygudem,
-                Andhra Pradesh.
+                Hyderabad,
+                Telangana.
               </p>
 
             </div>
@@ -409,11 +426,11 @@ export default function Location() {
                     text-3xl
                   "
                 >
-                  03 December 2026
+                  23 August 2026
                 </h5>
 
                 <p className="text-[#7A6652] mt-2">
-                  Thursday
+                  Sunday
                 </p>
 
               </div>
@@ -431,7 +448,7 @@ export default function Location() {
                     text-3xl
                   "
                 >
-                  06:00 AM
+                  11:23 AM
                 </h5>
 
                 <p className="text-[#7A6652] mt-2">
@@ -475,7 +492,7 @@ export default function Location() {
         >
 
           <a
-            href="https://maps.app.goo.gl/4yAMgcSTDsGXy7YXA"
+            href="https://maps.app.goo.gl/THtnHf2mX4XUkHYy6"
             target="_blank"
             rel="noopener noreferrer"
             className="
