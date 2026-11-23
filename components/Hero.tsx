@@ -64,7 +64,7 @@ const toggleMusic = () => {
           left-1/2
           top-12
           -translate-x-1/2
-          w-[1300px]
+          w-]
           max-w-none
           pointer-events-none
           select-none
@@ -80,8 +80,8 @@ const toggleMusic = () => {
           absolute
           left-1/2
           top-52
-          h-[700px]
-          w-[700px]
+          h-175
+          w-175
           -translate-x-1/2
           rounded-full
           bg-[#D4AF37]/10
@@ -365,7 +365,7 @@ scale-x-[-1]
               tracking-wide
             "
           >
-            Vineela
+            Sirija
           </motion.h1>
 
           <motion.div
@@ -395,7 +395,7 @@ scale-x-[-1]
               tracking-wide
             "
           >
-            Tarun
+            Sagar
           </motion.h1>
 
           {/* Family Text */}
@@ -467,7 +467,7 @@ scale-x-[-1]
                 font-semibold
               "
             >
-              Sunday
+              Thursday
             </h2>
 
             <p
@@ -478,7 +478,7 @@ scale-x-[-1]
                 md:text-2xl
               "
             >
-              23 AUGUST 2026
+              03 December 2026
             </p>
 
             <p
@@ -488,7 +488,7 @@ scale-x-[-1]
                 text-lg
               "
             >
-              Muhurtham • 11:23 AM
+              Muhurtham • 06:00 AM
             </p>
 
           </motion.div>

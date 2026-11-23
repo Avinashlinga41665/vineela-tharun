@@ -21,8 +21,8 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata = {
-  title: "Tarun & Vineela",
-  description: "Join us for the wedding celebration of Tharun & Vineela",
+  title: "Sagar & Sirija",
+  description: "Join us for the wedding celebration of Sagar & Sirija",
   verification: {
     google: "NRYfxebAeiv6cFQMMvJhYuWa_F_DYRWNxr32qXiQUjk",
   },

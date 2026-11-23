@@ -10,7 +10,7 @@ import {
   X,
 } from "lucide-react";
 
-const sections = ["home", "venue", "contact"];
+const sections = ["home", "venue"];
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
@@ -265,11 +265,11 @@ const toggleMusic = async () => {
             "
           >
             <span className="hidden md:block">
-              Tharun{" "}
+              Sagar{" "}
               <span className="text-[#C89B3C]">
                 &
               </span>{" "}
-              Vineela
+              Sirija
             </span>
 
             <span className="md:hidden">
@@ -404,7 +404,7 @@ const toggleMusic = async () => {
   whileTap={{ scale: 0.95 }}
   onClick={() =>
     window.open(
-      "https://maps.app.goo.gl/AGjjpEv1c4byyqjD9",
+      "https://maps.app.goo.gl/4yAMgcSTDsGXy7YXA",
       "_blank"
     )
   }

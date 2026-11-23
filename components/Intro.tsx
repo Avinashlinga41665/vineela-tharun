@@ -100,7 +100,7 @@ export default function Intro({
   />
 
   <h1 className="font-greatVibes text-4xl md:text-7xl text-[#2C2C2C]">
-    Tarun
+    Sagar
   </h1>
 
   <p className="text-[#D4AF37] tracking-[0.25em] my-2">
@@ -108,7 +108,7 @@ export default function Intro({
   </p>
 
   <h1 className="font-greatVibes text-4xl md:text-7xl text-[#2C2C2C] mt-3">
-    Vineela
+    Sirija
   </h1>
 
   <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-gray-500 mt-4 mb-8">
